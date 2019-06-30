@@ -18,7 +18,7 @@ Jack sockets are now colour coded, hopefully this should make using them more in
 
 ## Notes
 
-This is a port of Strums mental modules to the vcv based on (this wiki)[]
+This is a port of Strums mental modules to the vcv based on [this wiki](https://vcvrack.com/manual/Migrate1.html#)
 
 ## Module List
 
