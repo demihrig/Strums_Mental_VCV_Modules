@@ -166,7 +166,10 @@ MentalChordWidget::MentalChordWidget(MentalChord *module) : ModuleWidget(module)
 {
 
 setPanel(SVG::load(assetPlugin(pluginInstance, "res/MentalChord.svg")));
-
+//TODO make this better somehow
+  if(module == nullptr) {
+    return;
+  }
   addParam(createParam<MedKnob>(Vec(3, 20), module, MentalChord::OFFSET_PARAM, 0.0, 1.0, 0.5));
   addInput(createPort<CVInPort>(Vec(3, 50), PortWidget::INPUT, module, MentalChord::OFFSET_CV_INPUT));
   addParam(createParam<MedKnob>(Vec(33, 20), module, MentalChord::INVERSION_PARAM, 0.0, 1.0, 0.0));

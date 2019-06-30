@@ -290,7 +290,10 @@ MentalClockDividerWidget::MentalClockDividerWidget(MentalClockDivider *module) :
 {
 
 	setPanel(SVG::load(assetPlugin(pluginInstance, "res/MentalClockDivider.svg")));
-
+	//TODO make this better somehow
+  if(module == nullptr) {
+    return;
+  }
 	addInput(createPort<GateInPort>(Vec(3, 20), PortWidget::INPUT, module, MentalClockDivider::CLOCK_INPUT));
 	addInput(createPort<GateInPort>(Vec(3, 55), PortWidget::INPUT, module, MentalClockDivider::RESET_INPUT));
 	addParam(createParam<LEDButton>(Vec(5, 80), module, MentalClockDivider::RESET_PARAM, 0.0, 1.0, 0.0));

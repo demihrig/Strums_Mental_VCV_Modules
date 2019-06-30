@@ -184,9 +184,13 @@ struct MentalKnobsWidget : ModuleWidget {
 MentalKnobsWidget::MentalKnobsWidget(MentalKnobs *module) : ModuleWidget(module)
 {
 
-	
-  setPanel(SVG::load(assetPlugin(pluginInstance, "res/MentalKnobs.svg")));
+	//TODO make this better somehow
 
+
+  setPanel(SVG::load(assetPlugin(pluginInstance, "res/MentalKnobs.svg")));
+  if(module == nullptr) {
+    return;
+  }
   int group_offset = 120;    
   for (int i = 0 ; i < 3 ; i++)
   {

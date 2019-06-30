@@ -87,7 +87,10 @@ MentalMux8Widget::MentalMux8Widget(MentalMux8 *module) : ModuleWidget(module)
 {
 
   setPanel(SVG::load(assetPlugin(pluginInstance, "res/MentalMux8.svg")));
-	
+	  //TODO make this better somehow
+  if(module == nullptr) {
+    return;
+  }
   int spacing = 25; 
   int top_space = 15;
   

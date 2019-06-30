@@ -188,9 +188,14 @@ struct MentalGateMakerWidget : ModuleWidget {
 
 MentalGateMakerWidget::MentalGateMakerWidget(MentalGateMaker *module) : ModuleWidget(module)
 {
+  
 
   setPanel(SVG::load(assetPlugin(pluginInstance, "res/MentalGateMaker.svg")));
-	
+
+  //TODO make this better somehow
+	if(module == nullptr) {
+    return;
+  }
   addParam(createParam<MedKnob>(Vec(2, 20), module, MentalGateMaker::COUNT_NUM_PARAM, 0.0, 32.0, 0.0));
   addInput(createPort<CVInPort>(Vec(33, 20), PortWidget::INPUT, module, MentalGateMaker::COUNT_CV));
   NumberDisplayWidget *count_display = new NumberDisplayWidget();

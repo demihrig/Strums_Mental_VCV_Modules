@@ -87,7 +87,10 @@ MentalSwitch8Widget::MentalSwitch8Widget(MentalSwitch8 *module) : ModuleWidget(m
 {
 
   setPanel(SVG::load(assetPlugin(pluginInstance, "res/MentalSwitch8.svg")));
-	
+	//TODO make this better somehow
+  if(module == nullptr) {
+    return;
+  }
   int spacing = 25; 
   int top_space = 15;
   

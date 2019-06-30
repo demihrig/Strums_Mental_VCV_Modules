@@ -169,9 +169,12 @@ struct MentalMixerWidget : ModuleWidget {
 
 MentalMixerWidget::MentalMixerWidget(MentalMixer *module) : ModuleWidget(module)
 {
+  //TODO make this better somehow
 
   setPanel(SVG::load(assetPlugin(pluginInstance, "res/Mixer.svg")));
-
+  if(module == nullptr) {
+    return;
+  }
   int port_col = 8;
   int pots_col = port_col + 3;
 

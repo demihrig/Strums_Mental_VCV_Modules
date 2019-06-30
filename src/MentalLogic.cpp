@@ -151,9 +151,12 @@ struct MentalLogicWidget : ModuleWidget {
 
 MentalLogicWidget::MentalLogicWidget(MentalLogic *module) : ModuleWidget(module)
 {
-	
-  setPanel(SVG::load(assetPlugin(pluginInstance, "res/MentalLogic.svg")));
+	//TODO make this better somehow
 
+  setPanel(SVG::load(assetPlugin(pluginInstance, "res/MentalLogic.svg")));
+  if(module == nullptr) {
+    return;
+  }
   int input_column = 3;
   int output_column = 28;
   int led_column = 58;

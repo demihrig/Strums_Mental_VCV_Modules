@@ -101,8 +101,13 @@ struct MentalButtonsWidget : ModuleWidget {
 MentalButtonsWidget::MentalButtonsWidget(MentalButtons *module) : ModuleWidget(module)
 {
 
+
+
   setPanel(SVG::load(assetPlugin(pluginInstance, "res/MentalBUttons.svg")));
-	
+	  //TODO make this better somehow
+  if(module == nullptr) {
+    return;
+  }
   int spacing = 25; 
   int group_offset = 184;
   int top_space = 15;

@@ -257,9 +257,12 @@ struct MentalMasterClockWidget : ModuleWidget {
 
 MentalMasterClockWidget::MentalMasterClockWidget(MentalMasterClock *module) : ModuleWidget(module)
 {
+  //TODO make this better somehow
 
   setPanel(SVG::load(assetPlugin(pluginInstance, "res/MentalMasterClock.svg")));
-   
+     if(module == nullptr) {
+    return;
+  }
     addParam(createParam<MedKnob>(Vec(2, 20), module, MentalMasterClock::TEMPO_PARAM, 40.0, 250.0, 120.0));
     addParam(createParam<MedKnob>(Vec(2, 50), module, MentalMasterClock::TIMESIGTOP_PARAM,2.0, 15.0, 4.0));
     addParam(createParam<MedKnob>(Vec(2, 80), module, MentalMasterClock::TIMESIGBOTTOM_PARAM,0.0, 3.0, 1.0));

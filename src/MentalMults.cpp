@@ -56,19 +56,22 @@ struct MentalMultsWidget : ModuleWidget {
 
 MentalMultsWidget::MentalMultsWidget(MentalMults *module) : ModuleWidget(module)
 {
-
-	setPanel(SVG::load(assetPlugin(pluginInstance, "res/MentalMults.svg")));
 	
+	setPanel(SVG::load(assetPlugin(pluginInstance, "res/MentalMults.svg")));
+	//TODO make this better somehow
+	if(module == nullptr) {
+		return;
+	}
 	addInput(createPort<InPort>(Vec(3, 22), PortWidget::INPUT, module, MentalMults::INPUT_1));
-  addInput(createPort<InPort>(Vec(3, 190), PortWidget::INPUT, module, MentalMults::INPUT_2));
+  	addInput(createPort<InPort>(Vec(3, 190), PortWidget::INPUT, module, MentalMults::INPUT_2));
   
-  addOutput(createPort<OutPort>(Vec(3, 58), PortWidget::OUTPUT, module, MentalMults::OUTPUT_1));
+ 	addOutput(createPort<OutPort>(Vec(3, 58), PortWidget::OUTPUT, module, MentalMults::OUTPUT_1));
 	addOutput(createPort<OutPort>(Vec(3, 83), PortWidget::OUTPUT, module, MentalMults::OUTPUT_2));
 	addOutput(createPort<OutPort>(Vec(3, 108), PortWidget::OUTPUT, module, MentalMults::OUTPUT_3));
 	addOutput(createPort<OutPort>(Vec(3, 133), PortWidget::OUTPUT, module, MentalMults::OUTPUT_4));
 	addOutput(createPort<OutPort>(Vec(3, 158), PortWidget::OUTPUT, module, MentalMults::OUTPUT_5));
   
-  addOutput(createPort<OutPort>(Vec(3, 230), PortWidget::OUTPUT, module, MentalMults::OUTPUT_2_1));
+  	addOutput(createPort<OutPort>(Vec(3, 230), PortWidget::OUTPUT, module, MentalMults::OUTPUT_2_1));
 	addOutput(createPort<OutPort>(Vec(3, 255), PortWidget::OUTPUT, module, MentalMults::OUTPUT_2_2));
 	addOutput(createPort<OutPort>(Vec(3, 280), PortWidget::OUTPUT, module, MentalMults::OUTPUT_2_3));
 	addOutput(createPort<OutPort>(Vec(3, 305), PortWidget::OUTPUT, module, MentalMults::OUTPUT_2_4));

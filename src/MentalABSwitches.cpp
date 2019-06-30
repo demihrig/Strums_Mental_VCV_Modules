@@ -111,8 +111,12 @@ struct MentalABSwitchesWidget : ModuleWidget {
 MentalABSwitchesWidget::MentalABSwitchesWidget(MentalABSwitches *module) : ModuleWidget(module)
 {
 
-  setPanel(SVG::load(assetPlugin(pluginInstance, "res/MentalABSwitches.svg")));
 
+  setPanel(SVG::load(assetPlugin(pluginInstance, "res/MentalABSwitches.svg")));
+  //TODO make this better some how
+  if(module == nullptr) {
+    return;
+  }
   int group_spacing = 85;
   
   for (int i = 0 ; i < 4 ; i++)

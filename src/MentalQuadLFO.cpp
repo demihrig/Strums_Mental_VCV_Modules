@@ -224,7 +224,10 @@ MentalQuadLFOWidget::MentalQuadLFOWidget(MentalQuadLFO *module) : ModuleWidget(m
 {
 
   setPanel(SVG::load(assetPlugin(pluginInstance, "res/MentalQuadLFO.svg")));
-
+  //TODO make this better somehow
+  if(module == nullptr) {
+    return;
+  }
   int x_offset = 10.10;
   for (int i = 0 ; i < 4 ; i++)
   {

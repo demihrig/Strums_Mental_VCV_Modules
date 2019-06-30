@@ -135,9 +135,12 @@ struct MentalPatchMatrixWidget : ModuleWidget {
 
 MentalPatchMatrixWidget::MentalPatchMatrixWidget(MentalPatchMatrix *module) : ModuleWidget(module)
 {
-  
-  setPanel(SVG::load(assetPlugin(pluginInstance, "res/MentalPatchMatrix.svg")));
+  //TODO make this better somehow
 
+  setPanel(SVG::load(assetPlugin(pluginInstance, "res/MentalPatchMatrix.svg")));
+  if(module == nullptr) {
+    return;
+  }
   int top_row = 75;
   int row_spacing = 25; 
   int column_spacing = 25;

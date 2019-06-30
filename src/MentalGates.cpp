@@ -109,7 +109,10 @@ MentalGatesWidget::MentalGatesWidget(MentalGates *module) : ModuleWidget(module)
 {
 
 setPanel(SVG::load(assetPlugin(pluginInstance, "res/MentalGates.svg")));
-
+  //TODO make this better somehow
+  if(module == nullptr) {
+    return;
+  }
   int group_spacing = 85;
   for (int i = 0 ; i < 4 ; i++)
   {

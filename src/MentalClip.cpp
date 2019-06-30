@@ -78,9 +78,12 @@ struct MentalClipWidget : ModuleWidget {
 
 MentalClipWidget::MentalClipWidget(MentalClip *module) : ModuleWidget(module)
 {
-  
-  setPanel(SVG::load(assetPlugin(pluginInstance, "res/MentalClip.svg")));
 
+  setPanel(SVG::load(assetPlugin(pluginInstance, "res/MentalClip.svg")));
+  //TODO make this better somehow
+  if(module == nullptr) {
+    return;
+  }
   // label
   addParam(createParam<SmlKnob>(Vec(6, box.size.y / 2 - 169), module, MentalClip::THRESH1_PARAM, 0.0, 1.0, 1.0));
   addInput(createPort<CVInPort>(Vec(3, box.size.y / 2 - 148), PortWidget::INPUT, module, MentalClip::THRESH1_CV_INPUT));

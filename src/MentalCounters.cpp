@@ -150,7 +150,10 @@ MentalCountersWidget::MentalCountersWidget(MentalCounters *module) : ModuleWidge
 {
 
   setPanel(SVG::load(assetPlugin(pluginInstance, "res/MentalCounters.svg")));
-  
+    //TODO make this better somehow
+  if(module == nullptr) {
+    return;
+  }
   int group_offset = 190;
   
   addParam(createParam<MedKnob>(Vec(2, 20), module, MentalCounters::COUNT_NUM_PARAM, 0.0, 32.0, 0.0)); 

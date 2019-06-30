@@ -41,9 +41,11 @@ extern Model *modelMentalRadioButtons;
 /////////////////////////////////////////////
 // ports
 
+#define SVG_LOAD(thing) APP->window->loadSvg(thing)
+
 struct OutPort : SVGPort {
 	OutPort() {
-		sw->svg = SVG::load(assetPlugin(pluginInstance, "res/components/OutPort.svg"));
+		sw->svg = SVG_LOAD(asset::plugin(pluginInstance, "res/components/OutPort.svg"));
 		sw->wrap();
 		box.size = sw->box.size;
 	}
@@ -51,7 +53,7 @@ struct OutPort : SVGPort {
 
 struct InPort : SVGPort {
 	InPort() {
-		sw->svg = SVG::load(assetPlugin(pluginInstance, "res/components/InPort.svg"));
+		sw->svg = SVG_LOAD(asset::plugin(pluginInstance, "res/components/InPort.svg"));
 		sw->wrap();
 		box.size = sw->box.size;
 	}
@@ -59,7 +61,7 @@ struct InPort : SVGPort {
 
 struct CVInPort : SVGPort {
 	CVInPort() {
-		sw->svg = SVG::load(assetPlugin(pluginInstance, "res/components/CVInPort.svg"));
+		sw->svg = SVG_LOAD(asset::plugin(pluginInstance, "res/components/CVInPort.svg"));
 		sw->wrap();
 		box.size = sw->box.size;
 	}
@@ -67,7 +69,7 @@ struct CVInPort : SVGPort {
 
 struct CVOutPort : SVGPort {
 	CVOutPort() {
-		sw->svg = SVG::load(assetPlugin(pluginInstance, "res/components/CVOutPort.svg"));
+		sw->svg = SVG_LOAD(asset::plugin(pluginInstance, "res/components/CVOutPort.svg"));
 		sw->wrap();
 		box.size = sw->box.size;
 	}
@@ -75,7 +77,7 @@ struct CVOutPort : SVGPort {
 
 struct GateInPort : SVGPort {
 	GateInPort() {
-		sw->svg = SVG::load(assetPlugin(pluginInstance, "res/components/GateInPort.svg"));
+		sw->svg = SVG_LOAD(asset::plugin(pluginInstance, "res/components/GateInPort.svg"));
 		sw->wrap();
 		box.size = sw->box.size;
 	}
@@ -83,7 +85,7 @@ struct GateInPort : SVGPort {
 
 struct GateOutPort : SVGPort {
 	GateOutPort() {
-		sw->svg = SVG::load(assetPlugin(pluginInstance, "res/components/GateOutPort.svg"));
+		sw->svg = SVG_LOAD(asset::plugin(pluginInstance, "res/components/GateOutPort.svg"));
 		sw->wrap();
 		box.size = sw->box.size;
 	}
@@ -93,7 +95,7 @@ struct GateOutPort : SVGPort {
 
 struct LrgKnob : RoundKnob {
 	LrgKnob() {
-		setSVG(SVG::load(assetPlugin(pluginInstance, "res/components/LrgKnob.svg")));
+		setSVG(SVG_LOAD(asset::plugin(pluginInstance, "res/components/LrgKnob.svg")));
 		box.size = Vec(42,42);
 
 	}
@@ -101,7 +103,7 @@ struct LrgKnob : RoundKnob {
 
 struct MedKnob : RoundKnob {
 	MedKnob() {
-		setSVG(SVG::load(assetPlugin(pluginInstance, "res/components/MedKnob.svg")));
+		setSVG(SVG_LOAD(asset::plugin(pluginInstance, "res/components/MedKnob.svg")));
 		box.size = Vec(24,24);
 
 	}
@@ -109,18 +111,18 @@ struct MedKnob : RoundKnob {
 
 struct SmlKnob : RoundKnob {
 	SmlKnob() {
-		setSVG(SVG::load(assetPlugin(pluginInstance, "res/components/SmlKnob.svg")));
+		setSVG(SVG_LOAD(asset::plugin(pluginInstance, "res/components/SmlKnob.svg")));
 		box.size = Vec(20,20);
 	}
 };
 
 // switches
 
-struct ThreeWaySwitch : SVGSwitch /*ToggleSwitch*/ {
+struct ThreeWaySwitch : SvgSwitch /*ToggleSwitch*/ {
 	ThreeWaySwitch() {
-		addFrame(SVG::load(assetPlugin(pluginInstance,"res/components/Three_2.svg")));
-		addFrame(SVG::load(assetPlugin(pluginInstance,"res/components/Three_1.svg")));
-		addFrame(SVG::load(assetPlugin(pluginInstance,"res/components/Three_0.svg")));
+		addFrame(SVG_LOAD(asset::plugin(pluginInstance,"res/components/Three_2.svg")));
+		addFrame(SVG_LOAD(asset::plugin(pluginInstance,"res/components/Three_1.svg")));
+		addFrame(SVG_LOAD(asset::plugin(pluginInstance,"res/components/Three_0.svg")));
 	}
 };
 

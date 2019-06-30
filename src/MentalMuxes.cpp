@@ -135,9 +135,12 @@ struct MentalMuxesWidget : ModuleWidget {
 
 MentalMuxesWidget::MentalMuxesWidget(MentalMuxes *module) : ModuleWidget(module)
 {
+  //TODO make this better somehow
 
   setPanel(SVG::load(assetPlugin(pluginInstance, "res/MentalMuxes.svg")));
-
+  if(module == nullptr) {
+    return;
+  }
 	int group_offset = 90;
   addInput(createPort<GateInPort>(Vec(3, 75), PortWidget::INPUT, module, MentalMuxes::SELECT_A));  
 	addInput(createPort<InPort>(Vec(3, 25), PortWidget::INPUT, module, MentalMuxes::INPUT_1A));

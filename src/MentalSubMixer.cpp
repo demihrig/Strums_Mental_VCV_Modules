@@ -81,9 +81,12 @@ struct MentalSubMixerWidget : ModuleWidget {
 
 MentalSubMixerWidget::MentalSubMixerWidget(MentalSubMixer *module) : ModuleWidget(module)
 {
+	//TODO make this better somehow
 
   setPanel(SVG::load(assetPlugin(pluginInstance, "res/MentalSubMixer.svg")));
-
+  if(module == nullptr) {
+    return;
+  }
     int stripwidth = 28;
 	// master section
   	addOutput(createPort<OutPort>(Vec( 6 + stripwidth, 20), PortWidget::OUTPUT, module, MentalSubMixer::MIX_OUTPUT_L));

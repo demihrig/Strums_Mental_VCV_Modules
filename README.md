@@ -19,7 +19,7 @@ Jack sockets are now colour coded, hopefully this should make using them more in
 ## Notes
 
 This is a port of Strums mental modules to the vcv version 1.0, based on [this wiki](https://vcvrack.com/manual/Migrate1.html#)
-
+Anything not labeled *working/stable* is assumed to be broken
 ## Module List
 
 **Chord** - 
@@ -80,9 +80,11 @@ This is a port of Strums mental modules to the vcv version 1.0, based on [this w
 **Binary decoder** - 
   3 bit binary decoder true at one of 8 outputs dependent on logic state of the 3 inputs
   
-**8 way switch** - based on binary decoder, switches a signal to one of 8 outputs based on 3 bit selector inputs
+**8 way switch** - *working, has lag*
+ based on binary decoder, switches a signal to one of 8 outputs based on 3 bit selector inputs
 
-**8 to 1 Mux** - The reverse of the 8 way switch, 8 inputs 1 out selected with 3 logic inputs
+**8 to 1 Mux** - *stable*
+   The reverse of the 8 way switch, 8 inputs 1 out selected with 3 logic inputs
 
 **Dual Counters** - for euclidean rhythms
 

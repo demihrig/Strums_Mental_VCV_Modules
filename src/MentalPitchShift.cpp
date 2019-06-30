@@ -69,9 +69,13 @@ struct MentalPitchShiftWidget : ModuleWidget {
 
 MentalPitchShiftWidget::MentalPitchShiftWidget(MentalPitchShift *module) : ModuleWidget(module)
 {
+  
 
   setPanel(SVG::load(assetPlugin(pluginInstance, "res/MentalPitchShift.svg")));
-
+  //TODO make this better somehow
+  if(module == nullptr) {
+    return;
+  }
   addParam(createParam<MedKnob>(Vec(2, 20), module, MentalPitchShift::OCTAVE_SHIFT_1, -4.5, 4.5, 0.0));
   addParam(createParam<MedKnob>(Vec(2, 80), module, MentalPitchShift::OCTAVE_SHIFT_2, -4.5, 4.5, 0.0));
   addParam(createParam<MedKnob>(Vec(2, 140), module, MentalPitchShift::SEMITONE_SHIFT_1, -6.5, 6.5, 0.0));

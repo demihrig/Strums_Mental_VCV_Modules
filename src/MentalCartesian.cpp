@@ -226,8 +226,12 @@ MentalCartesianWidget::MentalCartesianWidget(MentalCartesian *module) : ModuleWi
 {
 
 
+
   setPanel(SVG::load(assetPlugin(pluginInstance, "res/MentalCartesian.svg")));
- 
+   //TODO make this better somehow
+  if(module == nullptr) {
+    return;
+  }
   int top = 25;
   int left = 3;
   int column_spacing = 25; 

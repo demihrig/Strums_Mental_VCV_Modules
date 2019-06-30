@@ -1,7 +1,7 @@
 {
   "slug": "mental",
   "name": "Strum's Mental VCV Modules (takantron89's fix)",
-  "version": "1.0.0",
+  "version": "0.6.3",
   "license": "BSD-3",
   "author": "Strum",
   "authorEmail": "strum@softhome.net",
@@ -40,7 +40,7 @@
     {
       "slug": "MentalFold",
       "name": "Wave Folder",
-      "description": "Simple Waver Folder\u001b[D\u001b[D\u001b[D\u001b[D\u001b[f",
+      "description": "Simple Waver Folder",
       "tags": [
         "Waveshaper"
       ]
