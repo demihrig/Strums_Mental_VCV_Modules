@@ -67,20 +67,20 @@ MentalSumsWidget::MentalSumsWidget(MentalSums *module) : ModuleWidget(module)
 
   setPanel(SVG::load(assetPlugin(pluginInstance, "res/MentalSums.svg")));
 
-  addOutput(Port::create<OutPort>(Vec(3, 22), Port::OUTPUT, module, MentalSums::OUTPUT_1));
-  addOutput(Port::create<OutPort>(Vec(3, 190), Port::OUTPUT, module, MentalSums::OUTPUT_2));
+  addOutput(createPort<OutPort>(Vec(3, 22), Port::OUTPUT, module, MentalSums::OUTPUT_1));
+  addOutput(createPort<OutPort>(Vec(3, 190), Port::OUTPUT, module, MentalSums::OUTPUT_2));
   
-  addInput(Port::create<InPort>(Vec(3, 58), Port::INPUT, module, MentalSums::INPUT_1));
-  addInput(Port::create<InPort>(Vec(3, 83), Port::INPUT, module, MentalSums::INPUT_2));
-  addInput(Port::create<InPort>(Vec(3, 108), Port::INPUT, module, MentalSums::INPUT_3));
-  addInput(Port::create<InPort>(Vec(3, 133), Port::INPUT, module, MentalSums::INPUT_4));
-  addInput(Port::create<InPort>(Vec(3, 158), Port::INPUT, module, MentalSums::INPUT_5));
+  addInput(createPort<InPort>(Vec(3, 58), PortWidget::INPUT, module, MentalSums::INPUT_1));
+  addInput(createPort<InPort>(Vec(3, 83), PortWidget::INPUT, module, MentalSums::INPUT_2));
+  addInput(createPort<InPort>(Vec(3, 108), PortWidget::INPUT, module, MentalSums::INPUT_3));
+  addInput(createPort<InPort>(Vec(3, 133), PortWidget::INPUT, module, MentalSums::INPUT_4));
+  addInput(createPort<InPort>(Vec(3, 158), PortWidget::INPUT, module, MentalSums::INPUT_5));
   
-  addInput(Port::create<InPort>(Vec(3, 230), Port::INPUT, module, MentalSums::INPUT_2_1));
-  addInput(Port::create<InPort>(Vec(3, 255), Port::INPUT, module, MentalSums::INPUT_2_2));
-  addInput(Port::create<InPort>(Vec(3, 280), Port::INPUT, module, MentalSums::INPUT_2_3));
-  addInput(Port::create<InPort>(Vec(3, 305), Port::INPUT, module, MentalSums::INPUT_2_4));
-  addInput(Port::create<InPort>(Vec(3, 330), Port::INPUT, module, MentalSums::INPUT_2_5));	
+  addInput(createPort<InPort>(Vec(3, 230), PortWidget::INPUT, module, MentalSums::INPUT_2_1));
+  addInput(createPort<InPort>(Vec(3, 255), PortWidget::INPUT, module, MentalSums::INPUT_2_2));
+  addInput(createPort<InPort>(Vec(3, 280), PortWidget::INPUT, module, MentalSums::INPUT_2_3));
+  addInput(createPort<InPort>(Vec(3, 305), PortWidget::INPUT, module, MentalSums::INPUT_2_4));
+  addInput(createPort<InPort>(Vec(3, 330), PortWidget::INPUT, module, MentalSums::INPUT_2_5));	
 }
 
 Model *modelMentalSums = createModel<MentalSums, MentalSumsWidget>("MentalSums");

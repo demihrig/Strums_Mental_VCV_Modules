@@ -113,13 +113,13 @@ setPanel(SVG::load(assetPlugin(pluginInstance, "res/MentalGates.svg")));
   int group_spacing = 85;
   for (int i = 0 ; i < 4 ; i++)
   {
-	  addInput(Port::create<InPort>(Vec(3, group_spacing * i +  60), Port::INPUT, module, MentalGates::INPUT + i));
-    addInput(Port::create<GateInPort>(Vec(3, group_spacing * i +  28), Port::INPUT, module, MentalGates::GATE_INPUT + i));
-    addOutput(Port::create<OutPort>(Vec(32, group_spacing * i +  60), Port::OUTPUT, module, MentalGates::OUTPUT + i));
+	  addInput(createPort<InPort>(Vec(3, group_spacing * i +  60), PortWidget::INPUT, module, MentalGates::INPUT + i));
+    addInput(createPort<GateInPort>(Vec(3, group_spacing * i +  28), PortWidget::INPUT, module, MentalGates::GATE_INPUT + i));
+    addOutput(createPort<OutPort>(Vec(32, group_spacing * i +  60), Port::OUTPUT, module, MentalGates::OUTPUT + i));
 
-    addChild(ModuleLightWidget::create<MedLight<BlueLED>>(Vec(26, group_spacing * i + 17), module, MentalGates::ON_LEDS + i));
-    addParam(ParamWidget::create<LEDButton>(Vec(35, group_spacing * i +  31), module, MentalGates::BUTTON_PARAM + i, 0.0, 1.0, 0.0));
-	  addChild(ModuleLightWidget::create<MedLight<BlueLED>>(Vec(35+5, group_spacing * i +  31+5), module, MentalGates::BUTTON_LIGHTS + i));  
+    addChild(createLight<MedLight<BlueLED>>(Vec(26, group_spacing * i + 17), module, MentalGates::ON_LEDS + i));
+    addParam(createParam<LEDButton>(Vec(35, group_spacing * i +  31), module, MentalGates::BUTTON_PARAM + i, 0.0, 1.0, 0.0));
+	  addChild(createLight<MedLight<BlueLED>>(Vec(35+5, group_spacing * i +  31+5), module, MentalGates::BUTTON_LIGHTS + i));  
   }
 }
 

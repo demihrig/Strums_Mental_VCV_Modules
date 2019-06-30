@@ -190,17 +190,17 @@ MentalKnobsWidget::MentalKnobsWidget(MentalKnobs *module) : ModuleWidget(module)
   int group_offset = 120;    
   for (int i = 0 ; i < 3 ; i++)
   {
-    addParam(ParamWidget::create<MedKnob>(Vec(2, 20+group_offset*i), module, MentalKnobs::KNOB_PARAM + i, -1.0, 1.0, 0.0));
-    addParam(ParamWidget::create<MedKnob>(Vec(32, 20+group_offset*i), module, MentalKnobs::SCALE_PARAM + i,0.0, 10.0, 1.0)); 
+    addParam(createParam<MedKnob>(Vec(2, 20+group_offset*i), module, MentalKnobs::KNOB_PARAM + i, -1.0, 1.0, 0.0));
+    addParam(createParam<MedKnob>(Vec(32, 20+group_offset*i), module, MentalKnobs::SCALE_PARAM + i,0.0, 10.0, 1.0)); 
     
-    addParam(ParamWidget::create<LEDButton>(Vec(5, 50+group_offset*i), module, MentalKnobs::STEP_SWITCH + i, 0.0, 1.0, 0.0));
-    addChild(ModuleLightWidget::create<MedLight<BlueLED>>(Vec(10, 55+group_offset*i), module, MentalKnobs::BUTTON_LEDS + i ));
-    addParam(ParamWidget::create<LEDButton>(Vec(5, 75+group_offset*i), module, MentalKnobs::BI_SWITCH + i, 0.0, 1.0, 0.0));
-    addChild(ModuleLightWidget::create<MedLight<BlueLED>>(Vec(10, 80+group_offset*i), module, MentalKnobs::BUTTON_LEDS + 3 + i));
-    addParam(ParamWidget::create<LEDButton>(Vec(35, 50+group_offset*i), module, MentalKnobs::STEPSIZE_SWITCH + i, 0.0, 1.0, 0.0));
-    addChild(ModuleLightWidget::create<MedLight<BlueLED>>(Vec(40, 55+group_offset*i), module, MentalKnobs::BUTTON_LEDS + 6 + i));
+    addParam(createParam<LEDButton>(Vec(5, 50+group_offset*i), module, MentalKnobs::STEP_SWITCH + i, 0.0, 1.0, 0.0));
+    addChild(createLight<MedLight<BlueLED>>(Vec(10, 55+group_offset*i), module, MentalKnobs::BUTTON_LEDS + i ));
+    addParam(createParam<LEDButton>(Vec(5, 75+group_offset*i), module, MentalKnobs::BI_SWITCH + i, 0.0, 1.0, 0.0));
+    addChild(createLight<MedLight<BlueLED>>(Vec(10, 80+group_offset*i), module, MentalKnobs::BUTTON_LEDS + 3 + i));
+    addParam(createParam<LEDButton>(Vec(35, 50+group_offset*i), module, MentalKnobs::STEPSIZE_SWITCH + i, 0.0, 1.0, 0.0));
+    addChild(createLight<MedLight<BlueLED>>(Vec(40, 55+group_offset*i), module, MentalKnobs::BUTTON_LEDS + 6 + i));
     
-    addOutput(Port::create<CVOutPort>(Vec(33, 75+group_offset*i), Port::OUTPUT, module, MentalKnobs::OUTPUT + i));     
+    addOutput(createPort<CVOutPort>(Vec(33, 75+group_offset*i), Port::OUTPUT, module, MentalKnobs::OUTPUT + i));     
   }
   
   NumberDisplayWidget4 *display = new NumberDisplayWidget4();

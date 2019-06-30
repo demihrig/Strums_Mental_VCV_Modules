@@ -153,13 +153,13 @@ MentalCountersWidget::MentalCountersWidget(MentalCounters *module) : ModuleWidge
   
   int group_offset = 190;
   
-  addParam(ParamWidget::create<MedKnob>(Vec(2, 20), module, MentalCounters::COUNT_NUM_PARAM, 0.0, 32.0, 0.0)); 
-  addInput(Port::create<GateInPort>(Vec(3, 90), Port::INPUT, module, MentalCounters::CLK_IN));
-	addInput(Port::create<GateInPort>(Vec(3, 120), Port::INPUT, module, MentalCounters::RESET_IN));
+  addParam(createParam<MedKnob>(Vec(2, 20), module, MentalCounters::COUNT_NUM_PARAM, 0.0, 32.0, 0.0)); 
+  addInput(createPort<GateInPort>(Vec(3, 90), PortWidget::INPUT, module, MentalCounters::CLK_IN));
+	addInput(createPort<GateInPort>(Vec(3, 120), PortWidget::INPUT, module, MentalCounters::RESET_IN));
   
-  addParam(ParamWidget::create<LEDButton>(Vec(5, 145), module, MentalCounters::RST_BUTTON, 0.0, 1.0, 0.0));
+  addParam(createParam<LEDButton>(Vec(5, 145), module, MentalCounters::RST_BUTTON, 0.0, 1.0, 0.0));
   
-  addOutput(Port::create<GateOutPort>(Vec(33, 90), Port::OUTPUT, module, MentalCounters::OUTPUT));
+  addOutput(createPort<GateOutPort>(Vec(33, 90), Port::OUTPUT, module, MentalCounters::OUTPUT));
   
   NumberDisplayWidget3 *display = new NumberDisplayWidget3();
 	display->box.pos = Vec(5,50);
@@ -168,13 +168,13 @@ MentalCountersWidget::MentalCountersWidget(MentalCounters *module) : ModuleWidge
 	addChild(display);
   
   /////////// counter 2
-  addParam(ParamWidget::create<MedKnob>(Vec(2, 20 + group_offset), module, MentalCounters::COUNT_NUM_PARAM_2, 0.0, 32.0, 0.0)); 
-  addInput(Port::create<GateInPort>(Vec(3, 90 + group_offset), Port::INPUT, module, MentalCounters::CLK_IN_2));
-	addInput(Port::create<GateInPort>(Vec(3, 120 + group_offset), Port::INPUT, module, MentalCounters::RESET_IN_2));
+  addParam(createParam<MedKnob>(Vec(2, 20 + group_offset), module, MentalCounters::COUNT_NUM_PARAM_2, 0.0, 32.0, 0.0)); 
+  addInput(createPort<GateInPort>(Vec(3, 90 + group_offset), PortWidget::INPUT, module, MentalCounters::CLK_IN_2));
+	addInput(createPort<GateInPort>(Vec(3, 120 + group_offset), PortWidget::INPUT, module, MentalCounters::RESET_IN_2));
   
-  addParam(ParamWidget::create<LEDButton>(Vec(5, 145 + group_offset), module, MentalCounters::RST_BUTTON_2, 0.0, 1.0, 0.0));
+  addParam(createParam<LEDButton>(Vec(5, 145 + group_offset), module, MentalCounters::RST_BUTTON_2, 0.0, 1.0, 0.0));
   
-  addOutput(Port::create<GateOutPort>(Vec(33, 90 + group_offset), Port::OUTPUT, module, MentalCounters::OUTPUT_2));
+  addOutput(createPort<GateOutPort>(Vec(33, 90 + group_offset), Port::OUTPUT, module, MentalCounters::OUTPUT_2));
   
   NumberDisplayWidget3 *display_2 = new NumberDisplayWidget3();
 	display_2->box.pos = Vec(5,50 + group_offset);

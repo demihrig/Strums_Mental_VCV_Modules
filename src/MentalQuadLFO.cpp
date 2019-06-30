@@ -228,23 +228,23 @@ MentalQuadLFOWidget::MentalQuadLFOWidget(MentalQuadLFO *module) : ModuleWidget(m
   int x_offset = 10.10;
   for (int i = 0 ; i < 4 ; i++)
   {
-	  addParam(ParamWidget::create<BefacoSlidePot>(mm2px(Vec(2.792 + i * x_offset, 3.937)), module,MentalQuadLFO::FREQ_PARAM + i, 0.0, 1.0, 0.0));
+	  addParam(createParam<BefacoSlidePot>(mm2px(Vec(2.792 + i * x_offset, 3.937)), module,MentalQuadLFO::FREQ_PARAM + i, 0.0, 1.0, 0.0));
 
-	  addInput(Port::create<CVInPort>(mm2px(Vec(1.003 + i * x_offset, 61.915)), Port::INPUT, module, MentalQuadLFO::FREQ_INPUT + i));
-	  addInput(Port::create<GateInPort>(mm2px(Vec(1.003 + i * x_offset, 72.858)), Port::INPUT, module, MentalQuadLFO::RESET_INPUT + i));
+	  addInput(createPort<CVInPort>(mm2px(Vec(1.003 + i * x_offset, 61.915)), PortWidget::INPUT, module, MentalQuadLFO::FREQ_INPUT + i));
+	  addInput(createPort<GateInPort>(mm2px(Vec(1.003 + i * x_offset, 72.858)), PortWidget::INPUT, module, MentalQuadLFO::RESET_INPUT + i));
 
-	  addOutput(Port::create<OutPort>(mm2px(Vec(1.003 + i * x_offset, 83.759)), Port::OUTPUT, module, MentalQuadLFO::SIN_OUTPUT + i));
-	  addOutput(Port::create<OutPort>(mm2px(Vec(1.003 + i * x_offset, 94.173)), Port::OUTPUT, module, MentalQuadLFO::TRI_OUTPUT + i));
-	  addOutput(Port::create<OutPort>(mm2px(Vec(1.003 + i * x_offset, 105.169)), Port::OUTPUT, module, MentalQuadLFO::SAW_OUTPUT + i));
-	  addOutput(Port::create<OutPort>(mm2px(Vec(1.003 + i * x_offset, 114.583)), Port::OUTPUT, module, MentalQuadLFO::SQR_OUTPUT + i));
+	  addOutput(createPort<OutPort>(mm2px(Vec(1.003 + i * x_offset, 83.759)), Port::OUTPUT, module, MentalQuadLFO::SIN_OUTPUT + i));
+	  addOutput(createPort<OutPort>(mm2px(Vec(1.003 + i * x_offset, 94.173)), Port::OUTPUT, module, MentalQuadLFO::TRI_OUTPUT + i));
+	  addOutput(createPort<OutPort>(mm2px(Vec(1.003 + i * x_offset, 105.169)), Port::OUTPUT, module, MentalQuadLFO::SAW_OUTPUT + i));
+	  addOutput(createPort<OutPort>(mm2px(Vec(1.003 + i * x_offset, 114.583)), Port::OUTPUT, module, MentalQuadLFO::SQR_OUTPUT + i));
   	
-    addChild(ModuleLightWidget::create<SmallLight<GreenRedLight>>(Vec(13 + i * 30, 125), module, MentalQuadLFO::PHASE_POS_LIGHT + i));
+    addChild(createLight<SmallLight<GreenRedLight>>(Vec(13 + i * 30, 125), module, MentalQuadLFO::PHASE_POS_LIGHT + i));
   }
   for (int i = 0 ; i < 5 ; i++)
   {
-    addChild(ModuleLightWidget::create<MedLight<BlueLED>>(mm2px(Vec(2.905 + i * 8 , 50.035)), module, MentalQuadLFO::MODE_LIGHTS + i));
+    addChild(createLight<MedLight<BlueLED>>(mm2px(Vec(2.905 + i * 8 , 50.035)), module, MentalQuadLFO::MODE_LIGHTS + i));
   }
-  addParam(ParamWidget::create<LEDButton>(Vec(50, 160), module, MentalQuadLFO::MODE_BUTTON_PARAM, 0.0, 1.0, 0.0));
+  addParam(createParam<LEDButton>(Vec(50, 160), module, MentalQuadLFO::MODE_BUTTON_PARAM, 0.0, 1.0, 0.0));
   
 }
 

@@ -117,17 +117,17 @@ MentalABSwitchesWidget::MentalABSwitchesWidget(MentalABSwitches *module) : Modul
   
   for (int i = 0 ; i < 4 ; i++)
   {
-	  addInput(Port::create<InPort>(Vec(3, group_spacing * i + 25), Port::INPUT, module, MentalABSwitches::INPUT + i));
-    addInput(Port::create<GateInPort>(Vec(3, group_spacing * i + 75), Port::INPUT, module, MentalABSwitches::SEL_INPUT + i));
+	  addInput(createPort<InPort>(Vec(3, group_spacing * i + 25), PortWidget::INPUT, module, MentalABSwitches::INPUT + i));
+    addInput(createPort<GateInPort>(Vec(3, group_spacing * i + 75), PortWidget::INPUT, module, MentalABSwitches::SEL_INPUT + i));
   
-    addOutput(Port::create<OutPort>(Vec(33, group_spacing * i + 25), Port::OUTPUT, module, MentalABSwitches::OUTPUT_A + i));
-    addOutput(Port::create<OutPort>(Vec(33, group_spacing * i + 50), Port::OUTPUT, module, MentalABSwitches::OUTPUT_B + i));
+    addOutput(createPort<OutPort>(Vec(33, group_spacing * i + 25), Port::OUTPUT, module, MentalABSwitches::OUTPUT_A + i));
+    addOutput(createPort<OutPort>(Vec(33, group_spacing * i + 50), Port::OUTPUT, module, MentalABSwitches::OUTPUT_B + i));
 
-    addChild(ModuleLightWidget::create<MedLight<BlueLED>>(Vec(62, group_spacing * i + 34), module, MentalABSwitches::A_LEDS + i ));
-    addChild(ModuleLightWidget::create<MedLight<BlueLED>>(Vec(62, group_spacing * i + 59), module, MentalABSwitches::B_LEDS + i));
+    addChild(createLight<MedLight<BlueLED>>(Vec(62, group_spacing * i + 34), module, MentalABSwitches::A_LEDS + i ));
+    addChild(createLight<MedLight<BlueLED>>(Vec(62, group_spacing * i + 59), module, MentalABSwitches::B_LEDS + i));
   
-    addParam(ParamWidget::create<LEDButton>(Vec(6, group_spacing * i + 54), module, MentalABSwitches::BUTTON_PARAM + i, 0.0, 1.0, 0.0));
-	  addChild(ModuleLightWidget::create<MedLight<BlueLED>>(Vec(6+5, group_spacing * i + 54+5), module, MentalABSwitches::BUTTON_LIGHTS + i));
+    addParam(createParam<LEDButton>(Vec(6, group_spacing * i + 54), module, MentalABSwitches::BUTTON_PARAM + i, 0.0, 1.0, 0.0));
+	  addChild(createLight<MedLight<BlueLED>>(Vec(6+5, group_spacing * i + 54+5), module, MentalABSwitches::BUTTON_LIGHTS + i));
   }
 }
 

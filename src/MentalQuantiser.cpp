@@ -135,18 +135,18 @@ MentalQuantiserWidget::MentalQuantiserWidget(MentalQuantiser *module) : ModuleWi
   int top_row = 40;
   int row_spacing = 25; 
 	
-  addParam(ParamWidget::create<MedKnob>(Vec(62, 15), module, MentalQuantiser::PITCH_PARAM, -6.5, 6.5, 0.0));
-  addInput(Port::create<CVInPort>(Vec(63, 45), Port::INPUT, module, MentalQuantiser::PITCH_INPUT));
+  addParam(createParam<MedKnob>(Vec(62, 15), module, MentalQuantiser::PITCH_PARAM, -6.5, 6.5, 0.0));
+  addInput(createPort<CVInPort>(Vec(63, 45), PortWidget::INPUT, module, MentalQuantiser::PITCH_INPUT));
   
-  addInput(Port::create<CVInPort>(Vec(3, top_row), Port::INPUT, module, MentalQuantiser::INPUT));
-  addOutput(Port::create<CVOutPort>(Vec(32, top_row), Port::OUTPUT, module, MentalQuantiser::OUTPUT));
+  addInput(createPort<CVInPort>(Vec(3, top_row), PortWidget::INPUT, module, MentalQuantiser::INPUT));
+  addOutput(createPort<CVOutPort>(Vec(32, top_row), Port::OUTPUT, module, MentalQuantiser::OUTPUT));
   
   for (int i = 0; i < 12 ; i++)
   {  
-    addParam(ParamWidget::create<LEDButton>(Vec(3, top_row + 30 + row_spacing * i), module, MentalQuantiser::BUTTON_PARAM + i, 0.0, 1.0, 0.0));
-	  addChild(ModuleLightWidget::create<MedLight<BlueLED>>(Vec(3+5, top_row + 30 + row_spacing * i + 5), module, MentalQuantiser::BUTTON_LIGHTS + i));
-    addChild(ModuleLightWidget::create<MedLight<BlueLED>>(Vec(30+5, top_row + 30 + row_spacing * i + 5), module, MentalQuantiser::OUTPUT_LIGHTS + i));
-    addOutput(Port::create<CVOutPort>(Vec(63, top_row + 40 + row_spacing * i), Port::OUTPUT, module, MentalQuantiser::REF_OUT + i));    
+    addParam(createParam<LEDButton>(Vec(3, top_row + 30 + row_spacing * i), module, MentalQuantiser::BUTTON_PARAM + i, 0.0, 1.0, 0.0));
+	  addChild(createLight<MedLight<BlueLED>>(Vec(3+5, top_row + 30 + row_spacing * i + 5), module, MentalQuantiser::BUTTON_LIGHTS + i));
+    addChild(createLight<MedLight<BlueLED>>(Vec(30+5, top_row + 30 + row_spacing * i + 5), module, MentalQuantiser::OUTPUT_LIGHTS + i));
+    addOutput(createPort<CVOutPort>(Vec(63, top_row + 40 + row_spacing * i), Port::OUTPUT, module, MentalQuantiser::REF_OUT + i));    
   }
 }
 

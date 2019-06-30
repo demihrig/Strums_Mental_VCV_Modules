@@ -86,22 +86,22 @@ MentalSubMixerWidget::MentalSubMixerWidget(MentalSubMixer *module) : ModuleWidge
 
     int stripwidth = 28;
 	// master section
-  	addOutput(Port::create<OutPort>(Vec( 6 + stripwidth, 20), Port::OUTPUT, module, MentalSubMixer::MIX_OUTPUT_L));
-	addOutput(Port::create<OutPort>(Vec( 6 + stripwidth * 2 , 20), Port::OUTPUT, module, MentalSubMixer::MIX_OUTPUT_R));
-	addParam(ParamWidget::create<LrgKnob>(Vec( 9 + stripwidth , 50), module, MentalSubMixer::MIX_PARAM, 0.0, 1.0, 0.5));
-	addInput(Port::create<CVInPort>(Vec( 6 + stripwidth * 1.5 , 100), Port::INPUT, module, MentalSubMixer::MIX_CV_INPUT));
+  	addOutput(createPort<OutPort>(Vec( 6 + stripwidth, 20), Port::OUTPUT, module, MentalSubMixer::MIX_OUTPUT_L));
+	addOutput(createPort<OutPort>(Vec( 6 + stripwidth * 2 , 20), Port::OUTPUT, module, MentalSubMixer::MIX_OUTPUT_R));
+	addParam(createParam<LrgKnob>(Vec( 9 + stripwidth , 50), module, MentalSubMixer::MIX_PARAM, 0.0, 1.0, 0.5));
+	addInput(createPort<CVInPort>(Vec( 6 + stripwidth * 1.5 , 100), PortWidget::INPUT, module, MentalSubMixer::MIX_CV_INPUT));
 	// channel strips
 	for (int i = 0 ; i < 4 ; i++)	{
 		// input
-		addInput(Port::create<InPort>(Vec( 6 + stripwidth * i , box.size.y - 182 ), Port::INPUT, module, MentalSubMixer::CH_INPUT + i));
+		addInput(createPort<InPort>(Vec( 6 + stripwidth * i , box.size.y - 182 ), PortWidget::INPUT, module, MentalSubMixer::CH_INPUT + i));
 		// gain
-		addParam(ParamWidget::create<SmlKnob>(Vec( 9 + stripwidth * i , box.size.y - 148 ), module, MentalSubMixer::CH_VOL_PARAM + i, 0.0, 1.0, 0.0));
-		addInput(Port::create<CVInPort>(Vec( 6 + stripwidth * i , box.size.y - 126 ), Port::INPUT, module, MentalSubMixer::CH_VOL_INPUT + i));
+		addParam(createParam<SmlKnob>(Vec( 9 + stripwidth * i , box.size.y - 148 ), module, MentalSubMixer::CH_VOL_PARAM + i, 0.0, 1.0, 0.0));
+		addInput(createPort<CVInPort>(Vec( 6 + stripwidth * i , box.size.y - 126 ), PortWidget::INPUT, module, MentalSubMixer::CH_VOL_INPUT + i));
 		// pan
-		addParam(ParamWidget::create<SmlKnob>(Vec( 9 + stripwidth * i , box.size.y - 92 ), module, MentalSubMixer::CH_PAN_PARAM + i, 0.0, 1.0, 0.5));
-		addInput(Port::create<CVInPort>(Vec( 6 + stripwidth * i , box.size.y - 70 ), Port::INPUT, module, MentalSubMixer::CH_PAN_INPUT + i));
+		addParam(createParam<SmlKnob>(Vec( 9 + stripwidth * i , box.size.y - 92 ), module, MentalSubMixer::CH_PAN_PARAM + i, 0.0, 1.0, 0.5));
+		addInput(createPort<CVInPort>(Vec( 6 + stripwidth * i , box.size.y - 70 ), PortWidget::INPUT, module, MentalSubMixer::CH_PAN_INPUT + i));
 		// output
-		addOutput(Port::create<OutPort>(Vec( 6 + stripwidth * i , box.size.y - 40 ), Port::OUTPUT, module, MentalSubMixer::CH_OUTPUT + i));
+		addOutput(createPort<OutPort>(Vec( 6 + stripwidth * i , box.size.y - 40 ), Port::OUTPUT, module, MentalSubMixer::CH_OUTPUT + i));
 	}
 }
 

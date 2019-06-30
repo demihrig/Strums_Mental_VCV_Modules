@@ -90,14 +90,14 @@ MentalBinaryDecoderWidget::MentalBinaryDecoderWidget(MentalBinaryDecoder *module
   int spacing = 25; 
   int top_space = 15;
   
-  addInput(Port::create<GateInPort>(Vec(3, top_space), Port::INPUT, module, MentalBinaryDecoder::INPUT_1));
-  addInput(Port::create<GateInPort>(Vec(3, top_space + spacing), Port::INPUT, module, MentalBinaryDecoder::INPUT_2));
-  addInput(Port::create<GateInPort>(Vec(3, top_space + spacing * 2), Port::INPUT, module, MentalBinaryDecoder::INPUT_4));
+  addInput(createPort<GateInPort>(Vec(3, top_space), PortWidget::INPUT, module, MentalBinaryDecoder::INPUT_1));
+  addInput(createPort<GateInPort>(Vec(3, top_space + spacing), PortWidget::INPUT, module, MentalBinaryDecoder::INPUT_2));
+  addInput(createPort<GateInPort>(Vec(3, top_space + spacing * 2), PortWidget::INPUT, module, MentalBinaryDecoder::INPUT_4));
   
   for (int i = 0; i < 8 ; i++)
   {  
-   addOutput(Port::create<GateOutPort>(Vec(30, top_space + spacing * i), Port::OUTPUT, module, MentalBinaryDecoder::OUTPUT + i));   	 
-   addChild(ModuleLightWidget::create<MedLight<BlueLED>>(Vec(60, top_space +  spacing * i + 8), module, MentalBinaryDecoder::OUTPUT_LEDS + i));
+   addOutput(createPort<GateOutPort>(Vec(30, top_space + spacing * i), Port::OUTPUT, module, MentalBinaryDecoder::OUTPUT + i));   	 
+   addChild(createLight<MedLight<BlueLED>>(Vec(60, top_space +  spacing * i + 8), module, MentalBinaryDecoder::OUTPUT_LEDS + i));
   }  
 }
 

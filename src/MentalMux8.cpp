@@ -91,17 +91,17 @@ MentalMux8Widget::MentalMux8Widget(MentalMux8 *module) : ModuleWidget(module)
   int spacing = 25; 
   int top_space = 15;
   
-  addInput(Port::create<GateInPort>(Vec(3, top_space), Port::INPUT, module, MentalMux8::INPUT_1));
-  addInput(Port::create<GateInPort>(Vec(3, top_space + spacing), Port::INPUT, module, MentalMux8::INPUT_2));
-  addInput(Port::create<GateInPort>(Vec(3, top_space + spacing * 2), Port::INPUT, module, MentalMux8::INPUT_4));
+  addInput(createPort<GateInPort>(Vec(3, top_space), PortWidget::INPUT, module, MentalMux8::INPUT_1));
+  addInput(createPort<GateInPort>(Vec(3, top_space + spacing), PortWidget::INPUT, module, MentalMux8::INPUT_2));
+  addInput(createPort<GateInPort>(Vec(3, top_space + spacing * 2), PortWidget::INPUT, module, MentalMux8::INPUT_4));
   
   for (int i = 0; i < 8 ; i++)
   {  
-   addInput(Port::create<InPort>(Vec(3, top_space + spacing * i + 100), Port::INPUT, module, MentalMux8::SIG_INPUT + i));   	 
-   addChild(ModuleLightWidget::create<MedLight<BlueLED>>(Vec(33, top_space +  spacing * i + 8 + 100), module, MentalMux8::INPUT_LEDS + i));
+   addInput(createPort<InPort>(Vec(3, top_space + spacing * i + 100), PortWidget::INPUT, module, MentalMux8::SIG_INPUT + i));   	 
+   addChild(createLight<MedLight<BlueLED>>(Vec(33, top_space +  spacing * i + 8 + 100), module, MentalMux8::INPUT_LEDS + i));
   }
   
-  addOutput(Port::create<OutPort>(Vec(30, top_space + spacing), Port::OUTPUT, module, MentalMux8::OUTPUT));  
+  addOutput(createPort<OutPort>(Vec(30, top_space + spacing), Port::OUTPUT, module, MentalMux8::OUTPUT));  
   
 }
 
