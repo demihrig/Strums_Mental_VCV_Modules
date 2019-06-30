@@ -1,4 +1,4 @@
-# Strum's Mental VCV Module Suite
+# Strum's Mental VCV Module Suite (taktantron89's fix)
 
 strum@softhome.net
 
@@ -20,6 +20,7 @@ Jack sockets are now colour coded, hopefully this should make using them more in
 
 This is a port of Strums mental modules to the vcv version 1.0, based on [this wiki](https://vcvrack.com/manual/Migrate1.html#)
 Anything not labeled *working/stable* is assumed to be broken
+
 ## Module List
 
 **Chord** - 
@@ -55,7 +56,7 @@ Anything not labeled *working/stable* is assumed to be broken
 **Mixer** - 
   12 Channel Mixer with 2 auxiliary sends and returns and channel mutes.
 
-**Clipper** - 
+**Clipper** - *working, not fully stable*
   Simple Clipping distortion
 
 **Wave Folder** - 
@@ -80,10 +81,10 @@ Anything not labeled *working/stable* is assumed to be broken
 **Binary decoder** - 
   3 bit binary decoder true at one of 8 outputs dependent on logic state of the 3 inputs
   
-**8 way switch** - *working, has lag*
+**8 way switch** - *working, has lag* -
  based on binary decoder, switches a signal to one of 8 outputs based on 3 bit selector inputs
 
-**8 to 1 Mux** - *stable*
+**8 to 1 Mux** - *stable* -
    The reverse of the 8 way switch, 8 inputs 1 out selected with 3 logic inputs
 
 **Dual Counters** - for euclidean rhythms
@@ -98,3 +99,15 @@ Anything not labeled *working/stable* is assumed to be broken
 
 **Quad LFO** - 4 LFOs with cv control and 4 synced modes in a small panel 
 
+## Extended Notes
+
+### Why is this a thing?
+
+I periodically use rack and its accompanying bridge VST in some of my music projects and unfortunately many of my presets broke as they depend on the Clipper and Wave folder from this plugin. In my stubborn nature (and because rack 0.6.2c is comparatively unstable) I've decided to pick up where the developer left off.
+
+### Objectives
+
+- [ ] All plugins at least work
+- [ ] All plugins are stable
+- [ ] Full port to the rack 1.x API
+- [ ] Merge back into master
