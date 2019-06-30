@@ -8,7 +8,7 @@
 ///////////////////////////////////////////////////////////////////
 
 #include "mental.hpp"
-#include "dsp/digital.hpp"
+//#include "dsp/digital.hpp"
 
 struct MentalPatchMatrix : Module {
 	enum ParamIds {
@@ -45,10 +45,11 @@ struct MentalPatchMatrix : Module {
   float input_values[10] = {0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0};
   float sums[10] = {0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0}; 
   
-	MentalPatchMatrix() : Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS) {}
+	MentalPatchMatrix() {
+		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);}
 	void step() override;
   
-  json_t *toJson() override
+  json_t *dataToJson() override
   {
 		json_t *rootJ = json_object();
     
@@ -67,7 +68,7 @@ struct MentalPatchMatrix : Module {
     return rootJ;
   }
   
-  void fromJson(json_t *rootJ) override
+  void dataFromJson(json_t *rootJ) override
   {
     // button states
 		json_t *button_statesJ = json_object_get(rootJ, "buttons");
@@ -135,7 +136,7 @@ struct MentalPatchMatrixWidget : ModuleWidget {
 MentalPatchMatrixWidget::MentalPatchMatrixWidget(MentalPatchMatrix *module) : ModuleWidget(module)
 {
   
-  setPanel(SVG::load(assetPlugin(plugin, "res/MentalPatchMatrix.svg")));
+  setPanel(SVG::load(assetPlugin(pluginInstance, "res/MentalPatchMatrix.svg")));
 
   int top_row = 75;
   int row_spacing = 25; 
@@ -153,4 +154,4 @@ MentalPatchMatrixWidget::MentalPatchMatrixWidget(MentalPatchMatrix *module) : Mo
 	}  
 }
 
-Model *modelMentalPatchMatrix = Model::create<MentalPatchMatrix, MentalPatchMatrixWidget>("mental", "MentalPatchMatrix", "Patch Matrix", UTILITY_TAG);
+Model *modelMentalPatchMatrix = createModel<MentalPatchMatrix, MentalPatchMatrixWidget>("MentalPatchMatrix");

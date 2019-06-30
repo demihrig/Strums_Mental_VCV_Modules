@@ -33,7 +33,8 @@ struct MentalBinaryDecoder : Module {
   
   int one, two, four, last_led, decoded;
   
-	MentalBinaryDecoder() : Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS) {}
+	MentalBinaryDecoder() {
+		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);}
 	void step() override;  
 };
 
@@ -84,7 +85,7 @@ struct MentalBinaryDecoderWidget : ModuleWidget {
 MentalBinaryDecoderWidget::MentalBinaryDecoderWidget(MentalBinaryDecoder *module) : ModuleWidget(module)
 {
 	
-  setPanel(SVG::load(assetPlugin(plugin, "res/MentalBinaryDecoder.svg")));
+  setPanel(SVG::load(assetPlugin(pluginInstance, "res/MentalBinaryDecoder.svg")));
 
   int spacing = 25; 
   int top_space = 15;
@@ -100,4 +101,5 @@ MentalBinaryDecoderWidget::MentalBinaryDecoderWidget(MentalBinaryDecoder *module
   }  
 }
 
-Model *modelMentalBinaryDecoder = Model::create<MentalBinaryDecoder, MentalBinaryDecoderWidget>("mental", "MentalBinaryDecoder", "Binary Decoder", UTILITY_TAG);
+//Model *modelMentalBinaryDecoder = createModel<MentalBinaryDecoder, MentalBinaryDecoderWidget>("mental", "MentalBinaryDecoder", "Binary Decoder", UTILITY_TAG);
+Model *modelMentalBinaryDecoder = createModel<MentalBinaryDecoder, MentalBinaryDecoderWidget>("MentalBinaryDecoder");

@@ -26,7 +26,8 @@ struct MentalClip : Module {
     NUM_OUTPUTS
   };
 
-  MentalClip() : Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS) {}
+  MentalClip() {
+		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS);}
   void step() override;
 };
 
@@ -78,7 +79,7 @@ struct MentalClipWidget : ModuleWidget {
 MentalClipWidget::MentalClipWidget(MentalClip *module) : ModuleWidget(module)
 {
   
-  setPanel(SVG::load(assetPlugin(plugin, "res/MentalClip.svg")));
+  setPanel(SVG::load(assetPlugin(pluginInstance, "res/MentalClip.svg")));
 
   // label
   addParam(ParamWidget::create<SmlKnob>(Vec(6, box.size.y / 2 - 169), module, MentalClip::THRESH1_PARAM, 0.0, 1.0, 1.0));
@@ -103,4 +104,4 @@ MentalClipWidget::MentalClipWidget(MentalClip *module) : ModuleWidget(module)
 
 }
 
-Model *modelMentalClip = Model::create<MentalClip, MentalClipWidget>("mental", "MentalClip", "Clipper", DISTORTION_TAG);
+Model *modelMentalClip = createModel<MentalClip, MentalClipWidget>("MentalClip");

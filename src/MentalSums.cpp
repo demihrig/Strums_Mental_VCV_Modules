@@ -36,7 +36,8 @@ struct MentalSums : Module {
   float sum_out_2 = 0.0;
   
   
-	MentalSums() : Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS) {}
+	MentalSums() {
+		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS);}
 	void step() override;
 };
 
@@ -64,7 +65,7 @@ struct MentalSumsWidget : ModuleWidget {
 MentalSumsWidget::MentalSumsWidget(MentalSums *module) : ModuleWidget(module)
 {
 
-  setPanel(SVG::load(assetPlugin(plugin, "res/MentalSums.svg")));
+  setPanel(SVG::load(assetPlugin(pluginInstance, "res/MentalSums.svg")));
 
   addOutput(Port::create<OutPort>(Vec(3, 22), Port::OUTPUT, module, MentalSums::OUTPUT_1));
   addOutput(Port::create<OutPort>(Vec(3, 190), Port::OUTPUT, module, MentalSums::OUTPUT_2));
@@ -82,4 +83,4 @@ MentalSumsWidget::MentalSumsWidget(MentalSums *module) : ModuleWidget(module)
   addInput(Port::create<InPort>(Vec(3, 330), Port::INPUT, module, MentalSums::INPUT_2_5));	
 }
 
-Model *modelMentalSums = Model::create<MentalSums, MentalSumsWidget>("mental", "MentalSums", "Summing Mixer", MIXER_TAG, UTILITY_TAG);
+Model *modelMentalSums = createModel<MentalSums, MentalSumsWidget>("MentalSums");

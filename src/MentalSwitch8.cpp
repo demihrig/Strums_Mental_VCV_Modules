@@ -34,7 +34,8 @@ struct MentalSwitch8 : Module {
   
   int one, two, four, decoded;
   
-	MentalSwitch8() : Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS) {}
+	MentalSwitch8() {
+		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);}
 	void step() override;  
 };
 
@@ -85,7 +86,7 @@ struct MentalSwitch8Widget : ModuleWidget {
 MentalSwitch8Widget::MentalSwitch8Widget(MentalSwitch8 *module) : ModuleWidget(module)
 {
 
-  setPanel(SVG::load(assetPlugin(plugin, "res/MentalSwitch8.svg")));
+  setPanel(SVG::load(assetPlugin(pluginInstance, "res/MentalSwitch8.svg")));
 	
   int spacing = 25; 
   int top_space = 15;
@@ -104,4 +105,4 @@ MentalSwitch8Widget::MentalSwitch8Widget(MentalSwitch8 *module) : ModuleWidget(m
   
 }
 
-Model *modelMentalSwitch8 = Model::create<MentalSwitch8, MentalSwitch8Widget>("mental", "MentalSwitch8", "8 Way Switch", SWITCH_TAG, UTILITY_TAG);
+Model *modelMentalSwitch8 = createModel<MentalSwitch8, MentalSwitch8Widget>("MentalSwitch8");

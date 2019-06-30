@@ -44,7 +44,8 @@ struct MentalMuxes : Module {
     NUM_LIGHTS
   };
   
-	MentalMuxes() : Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS) {}
+	MentalMuxes() {
+		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);}
 	void step() override;
 };
 
@@ -135,7 +136,7 @@ struct MentalMuxesWidget : ModuleWidget {
 MentalMuxesWidget::MentalMuxesWidget(MentalMuxes *module) : ModuleWidget(module)
 {
 
-  setPanel(SVG::load(assetPlugin(plugin, "res/MentalMuxes.svg")));
+  setPanel(SVG::load(assetPlugin(pluginInstance, "res/MentalMuxes.svg")));
 
 	int group_offset = 90;
   addInput(Port::create<GateInPort>(Vec(3, 75), Port::INPUT, module, MentalMuxes::SELECT_A));  
@@ -171,4 +172,4 @@ MentalMuxesWidget::MentalMuxesWidget(MentalMuxes *module) : ModuleWidget(module)
 	  
 }
 
-Model *modelMentalMuxes = Model::create<MentalMuxes, MentalMuxesWidget>("mental", "MentalMuxes", "Multiplexers", DUAL_TAG, UTILITY_TAG);
+Model *modelMentalMuxes = createModel<MentalMuxes, MentalMuxesWidget>("MentalMuxes");

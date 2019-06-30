@@ -8,7 +8,7 @@
 
 #include "mental.hpp"
 
-#include "dsp/digital.hpp"
+//#include "dsp/digital.hpp"
 
 
 struct MentalRadioButtons : Module {
@@ -38,10 +38,11 @@ struct MentalRadioButtons : Module {
   bool button_states[7] = {1,0,0,0,0,0,0};
   bool button2_states[7] = {1,0,0,0,0,0,0};
   
-	MentalRadioButtons() : Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS) {}
+	MentalRadioButtons() {
+		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);}
 	void step() override;
   
-  json_t *toJson() override
+  json_t *dataToJson() override
   {
 		json_t *rootJ = json_object();
     
@@ -64,7 +65,7 @@ struct MentalRadioButtons : Module {
     return rootJ;
   }
   
-  void fromJson(json_t *rootJ) override
+  void dataFromJson(json_t *rootJ) override
   {
     // button states
 		json_t *button_statesJ = json_object_get(rootJ, "buttons");
@@ -127,7 +128,7 @@ struct MentalRadioButtonsWidget : ModuleWidget {
 MentalRadioButtonsWidget::MentalRadioButtonsWidget(MentalRadioButtons *module) : ModuleWidget(module)
 {
 	
-  setPanel(SVG::load(assetPlugin(plugin, "res/MentalRadioButtons.svg")));
+  setPanel(SVG::load(assetPlugin(pluginInstance, "res/MentalRadioButtons.svg")));
 
   int spacing = 25; 
   int group_offset = 184;
@@ -148,4 +149,4 @@ MentalRadioButtonsWidget::MentalRadioButtonsWidget(MentalRadioButtons *module) :
   
 }
 
-Model *modelMentalRadioButtons = Model::create<MentalRadioButtons, MentalRadioButtonsWidget>("mental", "MentalRadioButtons", "Radio Buttons", CONTROLLER_TAG, SWITCH_TAG, UTILITY_TAG);
+Model *modelMentalRadioButtons = createModel<MentalRadioButtons, MentalRadioButtonsWidget>("MentalRadioButtons");

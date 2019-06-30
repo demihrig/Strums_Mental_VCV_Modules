@@ -24,7 +24,8 @@ struct MentalMults : Module {
 		NUM_OUTPUTS
 	};
 
-	MentalMults() : Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS) {}
+	MentalMults() {
+		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS);}
 	void step() override;
 };
 
@@ -56,7 +57,7 @@ struct MentalMultsWidget : ModuleWidget {
 MentalMultsWidget::MentalMultsWidget(MentalMults *module) : ModuleWidget(module)
 {
 
-	setPanel(SVG::load(assetPlugin(plugin, "res/MentalMults.svg")));
+	setPanel(SVG::load(assetPlugin(pluginInstance, "res/MentalMults.svg")));
 	
 	addInput(Port::create<InPort>(Vec(3, 22), Port::INPUT, module, MentalMults::INPUT_1));
   addInput(Port::create<InPort>(Vec(3, 190), Port::INPUT, module, MentalMults::INPUT_2));
@@ -74,4 +75,4 @@ MentalMultsWidget::MentalMultsWidget(MentalMults *module) : ModuleWidget(module)
 	addOutput(Port::create<OutPort>(Vec(3, 330), Port::OUTPUT, module, MentalMults::OUTPUT_2_5));
 }
 
-Model *modelMentalMults = Model::create<MentalMults, MentalMultsWidget>("mental", "MentalMults", "Mults", DUAL_TAG, MULTIPLE_TAG);
+Model *modelMentalMults = createModel<MentalMults, MentalMultsWidget>("MentalMults");

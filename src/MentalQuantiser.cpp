@@ -8,7 +8,7 @@
 
 #include "mental.hpp"
 
-#include "dsp/digital.hpp"
+//#include "dsp/digital.hpp"
 
 /////////////////////////////////////////////////
 struct MentalQuantiser : Module {
@@ -41,10 +41,11 @@ struct MentalQuantiser : Module {
   bool found = false;
   int last_found = 0;
    
-  MentalQuantiser() : Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS) {}
+  MentalQuantiser() {
+		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);}
 	void step() override;
   
-  json_t *toJson() override
+  json_t *dataToJson() override
   {
 		json_t *rootJ = json_object();
     
@@ -59,7 +60,7 @@ struct MentalQuantiser : Module {
     return rootJ;
   }
   
-  void fromJson(json_t *rootJ) override
+  void dataFromJson(json_t *rootJ) override
   {
     // button states
 		json_t *button_statesJ = json_object_get(rootJ, "buttons");
@@ -129,7 +130,7 @@ struct MentalQuantiserWidget : ModuleWidget {
 MentalQuantiserWidget::MentalQuantiserWidget(MentalQuantiser *module) : ModuleWidget(module)
 {
 
-  setPanel(SVG::load(assetPlugin(plugin, "res/MentalQuantiser.svg")));
+  setPanel(SVG::load(assetPlugin(pluginInstance, "res/MentalQuantiser.svg")));
 
   int top_row = 40;
   int row_spacing = 25; 
@@ -149,4 +150,4 @@ MentalQuantiserWidget::MentalQuantiserWidget(MentalQuantiser *module) : ModuleWi
   }
 }
 
-Model *modelMentalQuantiser = Model::create<MentalQuantiser, MentalQuantiserWidget>("mental", "MentalQuantiser", "Quantiser", QUANTIZER_TAG);
+Model *modelMentalQuantiser = createModel<MentalQuantiser, MentalQuantiserWidget>("MentalQuantiser");

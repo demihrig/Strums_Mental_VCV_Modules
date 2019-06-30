@@ -47,7 +47,8 @@ struct MentalLogic : Module {
 		NUM_LIGHTS
 	};
   
-	MentalLogic() : Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS) {}
+	MentalLogic() {
+		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);}
 	void step() override;
 };
 
@@ -151,7 +152,7 @@ struct MentalLogicWidget : ModuleWidget {
 MentalLogicWidget::MentalLogicWidget(MentalLogic *module) : ModuleWidget(module)
 {
 	
-  setPanel(SVG::load(assetPlugin(plugin, "res/MentalLogic.svg")));
+  setPanel(SVG::load(assetPlugin(pluginInstance, "res/MentalLogic.svg")));
 
   int input_column = 3;
   int output_column = 28;
@@ -202,4 +203,4 @@ MentalLogicWidget::MentalLogicWidget(MentalLogic *module) : ModuleWidget(module)
   addChild(ModuleLightWidget::create<MedLight<BlueLED>>(Vec(led_column, vert_offset + 158), module, MentalLogic::OR_LED_3));   
 }
 
-Model *modelMentalLogic = Model::create<MentalLogic, MentalLogicWidget>("mental", "MentalLogic", "Logic Gates", UTILITY_TAG);
+Model *modelMentalLogic = createModel<MentalLogic, MentalLogicWidget>("MentalLogic");

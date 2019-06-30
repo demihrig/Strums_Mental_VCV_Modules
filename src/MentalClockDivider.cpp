@@ -10,7 +10,7 @@
 
 
 #include "mental.hpp"
-#include "dsp/digital.hpp"
+//#include "dsp/digital.hpp"
 
 ////////////////////////////////////////////////
 struct MentalClockDivider : Module {
@@ -289,36 +289,36 @@ struct MentalClockDividerWidget : ModuleWidget {
 MentalClockDividerWidget::MentalClockDividerWidget(MentalClockDivider *module) : ModuleWidget(module)
 {
 
-	setPanel(SVG::load(assetPlugin(plugin, "res/MentalClockDivider.svg")));
+	setPanel(SVG::load(assetPlugin(pluginInstance, "res/MentalClockDivider.svg")));
 
-	addInput(Port::create<GateInPort>(Vec(3, 20), Port::INPUT, module, MentalClockDivider::CLOCK_INPUT));
-	addInput(Port::create<GateInPort>(Vec(3, 55), Port::INPUT, module, MentalClockDivider::RESET_INPUT));
-	addParam(ParamWidget::create<LEDButton>(Vec(5, 80), module, MentalClockDivider::RESET_PARAM, 0.0, 1.0, 0.0));
-	 
-	addOutput(Port::create<GateOutPort>(Vec(2, 120), Port::OUTPUT, module, MentalClockDivider::OUT2));  
-	addOutput(Port::create<GateOutPort>(Vec(2, 145), Port::OUTPUT, module, MentalClockDivider::OUT4));  
-	addOutput(Port::create<GateOutPort>(Vec(2, 170), Port::OUTPUT, module, MentalClockDivider::OUT8));  
-	addOutput(Port::create<GateOutPort>(Vec(2, 195), Port::OUTPUT, module, MentalClockDivider::OUT16));
-	addOutput(Port::create<GateOutPort>(Vec(2, 220), Port::OUTPUT, module, MentalClockDivider::OUT32));
+	addInput(createPort<GateInPort>(Vec(3, 20), PortWidget::INPUT, module, MentalClockDivider::CLOCK_INPUT));
+	addInput(createPort<GateInPort>(Vec(3, 55), PortWidget::INPUT, module, MentalClockDivider::RESET_INPUT));
+	addParam(createParam<LEDButton>(Vec(5, 80), module, MentalClockDivider::RESET_PARAM, 0.0, 1.0, 0.0));
+	
+	addOutput(createPort<GateOutPort>(Vec(2, 120), PortWidget::OUTPUT, module, MentalClockDivider::OUT2));  
+	addOutput(createPort<GateOutPort>(Vec(2, 145), PortWidget::OUTPUT, module, MentalClockDivider::OUT4));  
+	addOutput(createPort<GateOutPort>(Vec(2, 170), PortWidget::OUTPUT, module, MentalClockDivider::OUT8));  
+	addOutput(createPort<GateOutPort>(Vec(2, 195), PortWidget::OUTPUT, module, MentalClockDivider::OUT16));
+	addOutput(createPort<GateOutPort>(Vec(2, 220), PortWidget::OUTPUT, module, MentalClockDivider::OUT32));
   
-  addOutput(Port::create<GateOutPort>(Vec(2, 250), Port::OUTPUT, module, MentalClockDivider::OUT3));
-  addOutput(Port::create<GateOutPort>(Vec(2, 275), Port::OUTPUT, module, MentalClockDivider::OUT5));
-  addOutput(Port::create<GateOutPort>(Vec(2, 300), Port::OUTPUT, module, MentalClockDivider::OUT7));
-  addOutput(Port::create<GateOutPort>(Vec(2, 325), Port::OUTPUT, module, MentalClockDivider::OUT12));
+  addOutput(createPort<GateOutPort>(Vec(2, 250), PortWidget::OUTPUT, module, MentalClockDivider::OUT3));
+  addOutput(createPort<GateOutPort>(Vec(2, 275), PortWidget::OUTPUT, module, MentalClockDivider::OUT5));
+  addOutput(createPort<GateOutPort>(Vec(2, 300), PortWidget::OUTPUT, module, MentalClockDivider::OUT7));
+  addOutput(createPort<GateOutPort>(Vec(2, 325), PortWidget::OUTPUT, module, MentalClockDivider::OUT12));
   
 	
-	addChild(ModuleLightWidget::create<MedLight<BlueLED>>(Vec(33, 120), module, MentalClockDivider::LIGHTS));
-	addChild(ModuleLightWidget::create<MedLight<BlueLED>>(Vec(33, 145), module, MentalClockDivider::LIGHTS+1));
-	addChild(ModuleLightWidget::create<MedLight<BlueLED>>(Vec(33, 170), module, MentalClockDivider::LIGHTS+2));
-	addChild(ModuleLightWidget::create<MedLight<BlueLED>>(Vec(33, 195), module, MentalClockDivider::LIGHTS+3));  
-  addChild(ModuleLightWidget::create<MedLight<BlueLED>>(Vec(33, 220), module, MentalClockDivider::LIGHTS+4));
+	addChild(createLight<MedLight<BlueLED>>(Vec(33, 120), module, MentalClockDivider::LIGHTS));
+	addChild(createLight<MedLight<BlueLED>>(Vec(33, 145), module, MentalClockDivider::LIGHTS+1));
+	addChild(createLight<MedLight<BlueLED>>(Vec(33, 170), module, MentalClockDivider::LIGHTS+2));
+	addChild(createLight<MedLight<BlueLED>>(Vec(33, 195), module, MentalClockDivider::LIGHTS+3));  
+  addChild(createLight<MedLight<BlueLED>>(Vec(33, 220), module, MentalClockDivider::LIGHTS+4));
   
-	addChild(ModuleLightWidget::create<MedLight<BlueLED>>(Vec(33, 255), module, MentalClockDivider::LIGHTS+5));
-	addChild(ModuleLightWidget::create<MedLight<BlueLED>>(Vec(33, 275), module, MentalClockDivider::LIGHTS+6));
-	addChild(ModuleLightWidget::create<MedLight<BlueLED>>(Vec(33, 305), module, MentalClockDivider::LIGHTS+7));
-  addChild(ModuleLightWidget::create<MedLight<BlueLED>>(Vec(33, 330), module, MentalClockDivider::LIGHTS+8));
+	addChild(createLight<MedLight<BlueLED>>(Vec(33, 255), module, MentalClockDivider::LIGHTS+5));
+	addChild(createLight<MedLight<BlueLED>>(Vec(33, 275), module, MentalClockDivider::LIGHTS+6));
+	addChild(createLight<MedLight<BlueLED>>(Vec(33, 305), module, MentalClockDivider::LIGHTS+7));
+  addChild(createLight<MedLight<BlueLED>>(Vec(33, 330), module, MentalClockDivider::LIGHTS+8));
 	
 
 }
 
-Model *modelMentalClockDivider = Model::create<MentalClockDivider, MentalClockDividerWidget>("mental", "MentalClockDivider", "Clock Divider", UTILITY_TAG);
+Model *modelMentalClockDivider = createModel<MentalClockDivider, MentalClockDividerWidget>("MentalClockDivider");

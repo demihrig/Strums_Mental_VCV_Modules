@@ -8,7 +8,7 @@
 ///////////////////////////////////////////////////////////////////
 
 #include "mental.hpp"
-#include "dsp/digital.hpp"
+//#include "dsp/digital.hpp"
 
 struct MentalCartesian : Module {
 	enum ParamIds {
@@ -57,7 +57,8 @@ struct MentalCartesian : Module {
   int x_position = 0;
   int y_position = 0;
     
-	MentalCartesian() : Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS) {}
+	MentalCartesian() {
+		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);}
 	void step() override;
    
 };
@@ -225,7 +226,7 @@ MentalCartesianWidget::MentalCartesianWidget(MentalCartesian *module) : ModuleWi
 {
 
 
-  setPanel(SVG::load(assetPlugin(plugin, "res/MentalCartesian.svg")));
+  setPanel(SVG::load(assetPlugin(pluginInstance, "res/MentalCartesian.svg")));
  
   int top = 25;
   int left = 3;
@@ -262,4 +263,4 @@ MentalCartesianWidget::MentalCartesianWidget(MentalCartesian *module) : ModuleWi
 	
 }
 
-Model *modelMentalCartesian = Model::create<MentalCartesian, MentalCartesianWidget>("mental", "MentalCartesian", "Cartesian Sequencer", SEQUENCER_TAG);
+Model *modelMentalCartesian = createModel<MentalCartesian, MentalCartesianWidget>("MentalCartesian");

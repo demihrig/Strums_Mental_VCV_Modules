@@ -32,7 +32,8 @@ struct MentalFold : Module {
     NUM_OUTPUTS
 	};
 
-	MentalFold() : Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS) {}
+	MentalFold() {
+		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS);}
 	void step() override;
 };
 
@@ -86,7 +87,7 @@ struct MentalFoldWidget : ModuleWidget {
 MentalFoldWidget::MentalFoldWidget(MentalFold *module) : ModuleWidget(module)
 {
 
-  setPanel(SVG::load(assetPlugin(plugin, "res/MentalFold.svg")));
+  setPanel(SVG::load(assetPlugin(pluginInstance, "res/MentalFold.svg")));
   
   // label
   addParam(ParamWidget::create<SmlKnob>(Vec(6, box.size.y / 2 - 169), module, MentalFold::THRESH_PARAM, 0.0, 1.0, 1.0));
@@ -110,4 +111,4 @@ MentalFoldWidget::MentalFoldWidget(MentalFold *module) : ModuleWidget(module)
   addOutput(Port::create<OutPort>(Vec(3, box.size.y - 38), Port::OUTPUT, module, MentalFold::OUTPUT_2));
 
 }
-Model *modelMentalFold = Model::create<MentalFold, MentalFoldWidget>("mental", "MentalFold", "Wave Folder", DISTORTION_TAG);
+Model *modelMentalFold = createModel<MentalFold, MentalFoldWidget>("MentalFold");

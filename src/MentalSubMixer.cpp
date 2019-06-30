@@ -38,7 +38,8 @@ struct MentalSubMixer : Module {
 	float left_sum = 0.0;
 	float right_sum = 0.0;
 	
-	MentalSubMixer() : Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS) {};
+	MentalSubMixer() {
+		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS);};
 	void step() override;
 };
 
@@ -81,7 +82,7 @@ struct MentalSubMixerWidget : ModuleWidget {
 MentalSubMixerWidget::MentalSubMixerWidget(MentalSubMixer *module) : ModuleWidget(module)
 {
 
-  setPanel(SVG::load(assetPlugin(plugin, "res/MentalSubMixer.svg")));
+  setPanel(SVG::load(assetPlugin(pluginInstance, "res/MentalSubMixer.svg")));
 
     int stripwidth = 28;
 	// master section
@@ -104,4 +105,4 @@ MentalSubMixerWidget::MentalSubMixerWidget(MentalSubMixer *module) : ModuleWidge
 	}
 }
 
-Model *modelMentalSubMixer = Model::create<MentalSubMixer, MentalSubMixerWidget>("mental", "MentalSubMixer", "Sub Mixer", MIXER_TAG);
+Model *modelMentalSubMixer = createModel<MentalSubMixer, MentalSubMixerWidget>("MentalSubMixer");

@@ -1,0 +1,219 @@
+{
+  "slug": "mental",
+  "name": "Strum's Mental VCV Modules",
+  "version": "1.0.0",
+  "license": "BSD-3",
+  "author": "Strum",
+  "authorEmail": "",
+  "authorUrl": "",
+  "pluginUrl": "",
+  "manualUrl": "https://github.com/Strum/Strums_Mental_VCV_Modules/wiki/Mental-Modules-WIKI",
+  "sourceUrl": "",
+  "donateUrl": "",
+  "modules": [
+    {
+      "slug": "MentalSubMixer",
+      "name": "SubMixer",
+      "description": "4 Channel stereo mixer with pan based on fundametal VCMixer",
+      "tags": [
+        "Mixer",
+        "Panning"
+      ]
+    },
+    {
+      "slug": "MentalMults",
+      "name": "Mults",
+      "description": "Simple 2*5 Multiples",
+      "tags": [
+        "Dual",
+        "Multiple"
+      ]
+    },
+    {
+      "slug": "MentalMixer",
+      "name": "Mixer",
+      "description": "12 Channel Mixer with 2 auxiliary sends and returns and channel mutes.",
+      "tags": [
+        "Mixer",
+        "Panning"
+      ]
+    },
+    {
+      "slug": "MentalFold",
+      "name": "Wave Folder",
+      "description": "Simple Waver Folder\u001b[D\u001b[D\u001b[D\u001b[D\u001b[f",
+      "tags": [
+        "Waveshaper"
+      ]
+    },
+    {
+      "slug": "MentalGates",
+      "name": "Gates",
+      "description": "Manual or remotely controllable gates",
+      "tags": [
+        "Utility"
+      ]
+    },
+    {
+      "slug": "MentalClip",
+      "name": "Clipper",
+      "description": "Simple Clipping distortion",
+      "tags": [
+        "Distortion"
+      ]
+    },
+    {
+      "slug": "MentalABSwitches",
+      "name": "A/B Switches",
+      "description": "A/B Switches",
+      "tags": [
+        "Switch",
+        "Utility"
+      ]
+    },
+    {
+      "slug": "MentalQuantiser",
+      "name": "Quantiser",
+      "description": "Takes inputs pitchs and quantises to scale selected by buttons for each pitch",
+      "tags": [
+        "Quantiser"
+      ]
+    },
+    {
+      "slug": "MentalChord",
+      "name": "Chord",
+      "description": "Inspired by Q-Bit chord Eurorack module, takes input pitch and builds a chord",
+      "tags": [
+        "Controller"
+      ]
+    },
+    {
+      "slug": "MentalMuxes",
+      "name": "Muxes",
+      "description": "2 * 2 into 1 muxes and 1 4 into 1 mux",
+      "tags": [
+        "Utility"
+      ]
+    },
+    {
+      "slug": "MentalLogic",
+      "name": "Logic",
+      "description": "Various logic gates",
+      "tags": [
+        "Logic"
+      ]
+    },
+    {
+      "slug": "MentalButtons",
+      "name": "Buttons",
+      "description": "Buttons for controlling other modules manually 7 On/off switches in the top section and 7 momentary buttons in the lower.",
+      "tags": [
+        "Utility"
+      ]
+    },
+    {
+      "slug": "MentalSums",
+      "name": "Sums",
+      "description": "2 * 5 into 1 summing mixers, useful for adding cvs for pitch and modulation   ",
+      "tags": [
+        "Utility"
+      ]
+    },
+    {
+      "slug": "MentalPitchShift",
+      "name": "Pitch Shifter",
+      "description": "Shift pitches by octaves or semitones",
+      "tags": [
+        "Utility"
+      ]
+    },
+    {
+      "slug": "MentalClockDivider",
+      "name": "Clock Divider",
+      "description": "Based on autodafe's clock divider but I've simplified the code, made the gui smaller and added extra divisions 3, 5, 7 and 12",
+      "tags": [
+        "Utility"
+      ]
+    },
+    {
+      "slug": "MentalCartesian",
+      "name": "Cartesian Sequencer",
+      "description": "Cartesian sequencer similar to make noise rene.",
+      "tags": [
+        "Sequencer"
+      ]
+    },
+    {
+      "slug": "MentalPatchMatrix",
+      "name": "Patch Matrix",
+      "description": "10 by 10 Patch matrix",
+      "tags": [
+        "Utility"
+      ]
+    },
+    {
+      "slug": "MentalBinaryDecoder",
+      "name": "Binary decoder",
+      "description": "3 bit binary decoder true at one of 8 outputs dependent on logic state of the 3 inputs",
+      "tags": [
+        "Utility"
+      ]
+    },
+    {
+      "slug": "MentalSwitch8",
+      "name": "8 way switch",
+      "description": " based on binary decoder, switches a signal to one of 8 outputs based on 3 bit selector inputs",
+      "tags": [
+        "Utility"
+      ]
+    },
+    {
+      "slug": "MentalMux8",
+      "name": "8 to 1 Mux",
+      "description": "The reverse of the 8 way switch, 8 inputs 1 out selected with 3 logic inputs",
+      "tags": [
+        "Utility"
+      ]
+    },
+    {
+      "slug": "MentalCounters",
+      "name": "Dual Counters",
+      "description": "for euclidean rhythms",
+      "tags": [
+        "Utility"
+      ]
+    },
+    {
+      "slug": "MentalKnobs",
+      "name": "Knobs",
+      "description": "Outputs constants continous or stepped by integer ro semitone, uni or bipolar",
+      "tags": [
+        "Utility"
+      ]
+    },
+    {
+      "slug": "MentalGateMaker",
+      "name": "Gate Maker",
+      "description": "Counter with delay before opening and after closing, cycle or one shot mode - BETA",
+      "tags": [
+        "Utility"
+      ]
+    },
+    {
+      "slug": "MentalMasterClock",
+      "name": "Master Clock",
+      "description": "Set a Tempo by BPM and time signature, outputs beat, bar and subdivisions of the beat",
+      "tags": [
+        "Clock"
+      ]
+    },
+    {
+      "slug": "MentalQuadLFO",
+      "name": "Quad LFO",
+      "description": " 4 LFOs with cv control and 4 synced modes in a small panel ",
+      "tags": [
+        "LFO"
+      ]
+    }
+  ]
+}

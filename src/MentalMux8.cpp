@@ -34,7 +34,8 @@ struct MentalMux8 : Module {
   
   int one, two, four, decoded;
   
-	MentalMux8() : Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS) {}
+	MentalMux8() {
+		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);}
 	void step() override;  
 };
 
@@ -85,7 +86,7 @@ struct MentalMux8Widget : ModuleWidget {
 MentalMux8Widget::MentalMux8Widget(MentalMux8 *module) : ModuleWidget(module)
 {
 
-  setPanel(SVG::load(assetPlugin(plugin, "res/MentalMux8.svg")));
+  setPanel(SVG::load(assetPlugin(pluginInstance, "res/MentalMux8.svg")));
 	
   int spacing = 25; 
   int top_space = 15;
@@ -104,4 +105,4 @@ MentalMux8Widget::MentalMux8Widget(MentalMux8 *module) : ModuleWidget(module)
   
 }
 
-Model *modelMentalMux8 = Model::create<MentalMux8, MentalMux8Widget>("mental", "MentalMux8", "8 Way Multiplexer", UTILITY_TAG);
+Model *modelMentalMux8 = createModel<MentalMux8, MentalMux8Widget>("MentalMux8");

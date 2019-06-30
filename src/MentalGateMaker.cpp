@@ -9,7 +9,7 @@
 
 #include "mental.hpp"
 
-#include "dsp/digital.hpp"
+//#include "dsp/digital.hpp"
 
 #include <sstream>
 #include <iomanip>
@@ -149,7 +149,7 @@ struct NumberDisplayWidget : TransparentWidget {
   std::shared_ptr<Font> font;
 
   NumberDisplayWidget() {
-    font = Font::load(assetPlugin(plugin, "res/Segment7Standard.ttf"));
+    font = Font::load(assetPlugin(pluginInstance, "res/Segment7Standard.ttf"));
   };
 
   void draw(NVGcontext *vg) override
@@ -189,7 +189,7 @@ struct MentalGateMakerWidget : ModuleWidget {
 MentalGateMakerWidget::MentalGateMakerWidget(MentalGateMaker *module) : ModuleWidget(module)
 {
 
-  setPanel(SVG::load(assetPlugin(plugin, "res/MentalGateMaker.svg")));
+  setPanel(SVG::load(assetPlugin(pluginInstance, "res/MentalGateMaker.svg")));
 	
   addParam(ParamWidget::create<MedKnob>(Vec(2, 20), module, MentalGateMaker::COUNT_NUM_PARAM, 0.0, 32.0, 0.0));
   addInput(Port::create<CVInPort>(Vec(33, 20), Port::INPUT, module, MentalGateMaker::COUNT_CV));
@@ -233,4 +233,4 @@ MentalGateMakerWidget::MentalGateMakerWidget(MentalGateMaker *module) : ModuleWi
  
 }
 
-Model *modelMentalGateMaker = Model::create<MentalGateMaker, MentalGateMakerWidget>("mental", "MentalGateMaker", "Gate Maker", UTILITY_TAG);
+Model *modelMentalGateMaker = createModel<MentalGateMaker, MentalGateMakerWidget>("MentalGateMaker");

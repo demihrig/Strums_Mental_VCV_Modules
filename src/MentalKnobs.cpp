@@ -9,7 +9,7 @@
 
 #include "mental.hpp"
 
-#include "dsp/digital.hpp"
+//#include "dsp/digital.hpp"
 
 #include <sstream>
 #include <iomanip>
@@ -47,10 +47,11 @@ struct MentalKnobs : Module {
                             
   int octaves[3] = {0,0,0};
   int semitones[3] = {0,0,0};
-  MentalKnobs() : Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS) {}
+  MentalKnobs() {
+		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);}
 	void step() override;
   
-  json_t *toJson() override
+  json_t *dataToJson() override
   {
 		json_t *rootJ = json_object();
     
@@ -68,7 +69,7 @@ struct MentalKnobs : Module {
     return rootJ;
   }
   
-  void fromJson(json_t *rootJ) override
+  void dataFromJson(json_t *rootJ) override
   {
     // button states
 		json_t *switch_statesJ = json_object_get(rootJ, "switches");
@@ -143,7 +144,7 @@ struct NumberDisplayWidget4 : TransparentWidget {
   std::shared_ptr<Font> font;
 
   NumberDisplayWidget4() {
-    font = Font::load(assetPlugin(plugin, "res/Segment7Standard.ttf"));
+    font = Font::load(assetPlugin(pluginInstance, "res/Segment7Standard.ttf"));
   };
 
   void draw(NVGcontext *vg) override
@@ -184,7 +185,7 @@ MentalKnobsWidget::MentalKnobsWidget(MentalKnobs *module) : ModuleWidget(module)
 {
 
 	
-  setPanel(SVG::load(assetPlugin(plugin, "res/MentalKnobs.svg")));
+  setPanel(SVG::load(assetPlugin(pluginInstance, "res/MentalKnobs.svg")));
 
   int group_offset = 120;    
   for (int i = 0 ; i < 3 ; i++)
@@ -222,4 +223,4 @@ MentalKnobsWidget::MentalKnobsWidget(MentalKnobs *module) : ModuleWidget(module)
  
 }
 
-Model *modelMentalKnobs = Model::create<MentalKnobs, MentalKnobsWidget>("mental", "MentalKnobs", "Knobs", CONTROLLER_TAG, UTILITY_TAG);
+Model *modelMentalKnobs = createModel<MentalKnobs, MentalKnobsWidget>("MentalKnobs");

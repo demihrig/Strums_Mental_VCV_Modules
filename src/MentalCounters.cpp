@@ -9,7 +9,7 @@
 
 #include "mental.hpp"
 
-#include "dsp/digital.hpp"
+//#include "dsp/digital.hpp"
 
 #include <sstream>
 #include <iomanip>
@@ -109,7 +109,7 @@ struct NumberDisplayWidget3 : TransparentWidget {
   std::shared_ptr<Font> font;
 
   NumberDisplayWidget3() {
-    font = Font::load(assetPlugin(plugin, "res/Segment7Standard.ttf"));
+    font = Font::load(assetPlugin(pluginInstance, "res/Segment7Standard.ttf"));
   };
 
   void draw(NVGcontext *vg) override
@@ -149,7 +149,7 @@ struct MentalCountersWidget : ModuleWidget {
 MentalCountersWidget::MentalCountersWidget(MentalCounters *module) : ModuleWidget(module)
 {
 
-  setPanel(SVG::load(assetPlugin(plugin, "res/MentalCounters.svg")));
+  setPanel(SVG::load(assetPlugin(pluginInstance, "res/MentalCounters.svg")));
   
   int group_offset = 190;
   
@@ -184,4 +184,4 @@ MentalCountersWidget::MentalCountersWidget(MentalCounters *module) : ModuleWidge
   	  
 }
 
-Model *modelMentalCounters = Model::create<MentalCounters, MentalCountersWidget>("mental", "MentalCounters", "Counters", UTILITY_TAG);
+Model *modelMentalCounters = createModel<MentalCounters, MentalCountersWidget>("MentalCounters");

@@ -9,7 +9,7 @@
 
 #include "mental.hpp"
 
-#include "dsp/digital.hpp"
+//#include "dsp/digital.hpp"
 
 #include <sstream>
 #include <iomanip>
@@ -82,7 +82,7 @@ struct MentalMasterClock : Module {
   MentalMasterClock(); 
 	void step() override;
   
-  json_t *toJson() override
+  json_t *dataToJson() override
   {
 		json_t *rootJ = json_object();
     json_t *button_statesJ = json_array();
@@ -92,7 +92,7 @@ struct MentalMasterClock : Module {
     return rootJ;
   }
   
-  void fromJson(json_t *rootJ) override
+  void dataFromJson(json_t *rootJ) override
   {
     json_t *button_statesJ = json_object_get(rootJ, "run");
 		if (button_statesJ)
@@ -217,7 +217,7 @@ struct NumberDisplayWidget2 : TransparentWidget {
   std::shared_ptr<Font> font;
 
   NumberDisplayWidget2() {
-    font = Font::load(assetPlugin(plugin, "res/Segment7Standard.ttf"));
+    font = Font::load(assetPlugin(pluginInstance, "res/Segment7Standard.ttf"));
   };
 
   void draw(NVGcontext *vg) override
@@ -258,7 +258,7 @@ struct MentalMasterClockWidget : ModuleWidget {
 MentalMasterClockWidget::MentalMasterClockWidget(MentalMasterClock *module) : ModuleWidget(module)
 {
 
-  setPanel(SVG::load(assetPlugin(plugin, "res/MentalMasterClock.svg")));
+  setPanel(SVG::load(assetPlugin(pluginInstance, "res/MentalMasterClock.svg")));
    
     addParam(ParamWidget::create<MedKnob>(Vec(2, 20), module, MentalMasterClock::TEMPO_PARAM, 40.0, 250.0, 120.0));
     addParam(ParamWidget::create<MedKnob>(Vec(2, 50), module, MentalMasterClock::TIMESIGTOP_PARAM,2.0, 15.0, 4.0));
@@ -302,4 +302,4 @@ MentalMasterClockWidget::MentalMasterClockWidget(MentalMasterClock *module) : Mo
  
 }
 
-Model *modelMentalMasterClock = Model::create<MentalMasterClock, MentalMasterClockWidget>("mental", "MentalMasterClock", "Master Clock", CLOCK_TAG);
+Model *modelMentalMasterClock = createModel<MentalMasterClock, MentalMasterClockWidget>("MentalMasterClock");

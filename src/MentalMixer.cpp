@@ -7,7 +7,7 @@
 ///////////////////////////////////////////////////
 
 #include "mental.hpp"
-#include "dsp/digital.hpp"
+//#include "dsp/digital.hpp"
 
 ///////////////////////////////////////////////////
 struct MentalMixer : Module {
@@ -61,10 +61,11 @@ struct MentalMixer : Module {
   float left_sum = 0.0;
   float right_sum = 0.0;
   
-	MentalMixer() : Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS) {}
+	MentalMixer() {
+		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);}
 	void step() override;
   
-  json_t *toJson() override
+  json_t *dataToJson() override
   {
 		json_t *rootJ = json_object();
     
@@ -79,7 +80,7 @@ struct MentalMixer : Module {
     return rootJ;
   }
   
-  void fromJson(json_t *rootJ) override
+  void dataFromJson(json_t *rootJ) override
   {
     // mute states
 		json_t *mute_statesJ = json_object_get(rootJ, "mutes");
@@ -169,7 +170,7 @@ struct MentalMixerWidget : ModuleWidget {
 MentalMixerWidget::MentalMixerWidget(MentalMixer *module) : ModuleWidget(module)
 {
 
-  setPanel(SVG::load(assetPlugin(plugin, "res/Mixer.svg")));
+  setPanel(SVG::load(assetPlugin(pluginInstance, "res/Mixer.svg")));
 
   int port_col = 8;
   int pots_col = port_col + 3;
@@ -221,4 +222,4 @@ MentalMixerWidget::MentalMixerWidget(MentalMixer *module) : ModuleWidget(module)
 
 }
 
-Model *modelMentalMixer = Model::create<MentalMixer, MentalMixerWidget>("mental", "MentalMixer", "Mixer", MIXER_TAG);
+Model *modelMentalMixer = createModel<MentalMixer, MentalMixerWidget>("MentalMixer");

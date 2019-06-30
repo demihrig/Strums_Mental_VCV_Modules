@@ -47,7 +47,8 @@ struct MentalChord : Module {
       NUM_OUTPUTS
 	};
   
-	MentalChord() : Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS) {}
+	MentalChord() {
+		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS);}
 	void step() override;
 };
 
@@ -164,7 +165,7 @@ struct MentalChordWidget : ModuleWidget {
 MentalChordWidget::MentalChordWidget(MentalChord *module) : ModuleWidget(module)
 {
 
-setPanel(SVG::load(assetPlugin(plugin, "res/MentalChord.svg")));
+setPanel(SVG::load(assetPlugin(pluginInstance, "res/MentalChord.svg")));
 
   addParam(ParamWidget::create<MedKnob>(Vec(3, 20), module, MentalChord::OFFSET_PARAM, 0.0, 1.0, 0.5));
   addInput(Port::create<CVInPort>(Vec(3, 50), Port::INPUT, module, MentalChord::OFFSET_CV_INPUT));
@@ -201,4 +202,4 @@ setPanel(SVG::load(assetPlugin(plugin, "res/MentalChord.svg")));
     
 }
 
-Model *modelMentalChord = Model::create<MentalChord, MentalChordWidget>("mental", "MentalChord", "Chord", CONTROLLER_TAG);
+Model *modelMentalChord = createModel<MentalChord, MentalChordWidget>("MentalChord");

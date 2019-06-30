@@ -1,6 +1,6 @@
 #include "mental.hpp"
 
-#include "dsp/digital.hpp"
+//#include "dsp/digital.hpp"
 
 struct LowFrequencyOscillator {
 	float phase = 0.0;
@@ -102,10 +102,11 @@ struct MentalQuadLFO : Module {
   SchmittTrigger mode_button_trigger;
   int mode = 0;
   
-	MentalQuadLFO() : Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS) {}
+	MentalQuadLFO() {
+		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);}
 	void step() override;
   
-  json_t *toJson() override
+  json_t *dataToJson() override
   {
 		json_t *rootJ = json_object();
     
@@ -116,7 +117,7 @@ struct MentalQuadLFO : Module {
     return rootJ;
   }
   
-  void fromJson(json_t *rootJ) override
+  void dataFromJson(json_t *rootJ) override
   {
     // read mode
 		json_t *modeJ = json_object_get(rootJ, "mode");
@@ -222,7 +223,7 @@ struct MentalQuadLFOWidget : ModuleWidget {
 MentalQuadLFOWidget::MentalQuadLFOWidget(MentalQuadLFO *module) : ModuleWidget(module)
 {
 
-  setPanel(SVG::load(assetPlugin(plugin, "res/MentalQuadLFO.svg")));
+  setPanel(SVG::load(assetPlugin(pluginInstance, "res/MentalQuadLFO.svg")));
 
   int x_offset = 10.10;
   for (int i = 0 ; i < 4 ; i++)
@@ -247,4 +248,4 @@ MentalQuadLFOWidget::MentalQuadLFOWidget(MentalQuadLFO *module) : ModuleWidget(m
   
 }
 
-Model *modelMentalQuadLFO = Model::create<MentalQuadLFO, MentalQuadLFOWidget>("mental", "MentalQuadLFO", "Quad LFO", LFO_TAG, QUAD_TAG, CLOCK_TAG);
+Model *modelMentalQuadLFO = createModel<MentalQuadLFO, MentalQuadLFOWidget>("MentalQuadLFO");

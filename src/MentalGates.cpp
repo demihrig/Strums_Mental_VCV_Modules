@@ -8,7 +8,7 @@
 
 #include "mental.hpp"
 
-#include "dsp/digital.hpp"
+//#include "dsp/digital.hpp"
 /////////////////////////////////////////////////
 
 struct MentalGates : Module {
@@ -37,10 +37,11 @@ struct MentalGates : Module {
   float signal[4] = {0.0,0.0,0.0};
   float on[4] = {0.0,0.0,0.0};
   
-	MentalGates() : Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS) {}
+	MentalGates() {
+		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);}
 	void step() override;
   
-  json_t *toJson() override
+  json_t *dataToJson() override
   {
 		json_t *rootJ = json_object();
     
@@ -55,7 +56,7 @@ struct MentalGates : Module {
     return rootJ;
   }
   
-  void fromJson(json_t *rootJ) override
+  void dataFromJson(json_t *rootJ) override
   {
     // button states
 		json_t *button_statesJ = json_object_get(rootJ, "buttons");
@@ -107,7 +108,7 @@ struct MentalGatesWidget : ModuleWidget {
 MentalGatesWidget::MentalGatesWidget(MentalGates *module) : ModuleWidget(module)
 {
 
-setPanel(SVG::load(assetPlugin(plugin, "res/MentalGates.svg")));
+setPanel(SVG::load(assetPlugin(pluginInstance, "res/MentalGates.svg")));
 
   int group_spacing = 85;
   for (int i = 0 ; i < 4 ; i++)
@@ -122,4 +123,4 @@ setPanel(SVG::load(assetPlugin(plugin, "res/MentalGates.svg")));
   }
 }
 
-Model *modelMentalGates = Model::create<MentalGates, MentalGatesWidget>("mental", "MentalGates", "Gates", UTILITY_TAG);
+Model *modelMentalGates = createModel<MentalGates, MentalGatesWidget>("MentalGates");

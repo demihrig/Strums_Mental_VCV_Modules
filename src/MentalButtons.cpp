@@ -8,7 +8,7 @@
 
 #include "mental.hpp"
 
-#include "dsp/digital.hpp"
+//#include "dsp/digital.hpp"
 
 
 struct MentalButtons : Module {
@@ -34,10 +34,11 @@ struct MentalButtons : Module {
   SchmittTrigger button_triggers[7];
   bool button_states[7] = {0,0,0,0,0,0,0};
   
-	MentalButtons() : Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS) {}
+	MentalButtons() {
+		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);}
 	void step() override;
   
-  json_t *toJson() override
+  json_t *dataToJson() override
   {
 		json_t *rootJ = json_object();
     
@@ -52,7 +53,7 @@ struct MentalButtons : Module {
     return rootJ;
   }
   
-  void fromJson(json_t *rootJ) override
+  void dataFromJson(json_t *rootJ) override
   {
     // button states
 		json_t *button_statesJ = json_object_get(rootJ, "buttons");
@@ -100,7 +101,7 @@ struct MentalButtonsWidget : ModuleWidget {
 MentalButtonsWidget::MentalButtonsWidget(MentalButtons *module) : ModuleWidget(module)
 {
 
-  setPanel(SVG::load(assetPlugin(plugin, "res/MentalBUttons.svg")));
+  setPanel(SVG::load(assetPlugin(pluginInstance, "res/MentalBUttons.svg")));
 	
   int spacing = 25; 
   int group_offset = 184;
@@ -119,4 +120,4 @@ MentalButtonsWidget::MentalButtonsWidget(MentalButtons *module) : ModuleWidget(m
   
 }
 
-Model *modelMentalButtons = Model::create<MentalButtons, MentalButtonsWidget>("mental", "MentalButtons", "Buttons",  UTILITY_TAG);
+Model *modelMentalButtons = createModel<MentalButtons, MentalButtonsWidget>("MentalButtons");

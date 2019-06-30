@@ -36,7 +36,8 @@ struct MentalPitchShift : Module {
     NUM_OUTPUTS
 	};
 
-	MentalPitchShift() : Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS) {}
+	MentalPitchShift() {
+		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS);}
   
   float octave_1_out = 0.0;
   float octave_2_out = 0.0;
@@ -69,7 +70,7 @@ struct MentalPitchShiftWidget : ModuleWidget {
 MentalPitchShiftWidget::MentalPitchShiftWidget(MentalPitchShift *module) : ModuleWidget(module)
 {
 
-  setPanel(SVG::load(assetPlugin(plugin, "res/MentalPitchShift.svg")));
+  setPanel(SVG::load(assetPlugin(pluginInstance, "res/MentalPitchShift.svg")));
 
   addParam(ParamWidget::create<MedKnob>(Vec(2, 20), module, MentalPitchShift::OCTAVE_SHIFT_1, -4.5, 4.5, 0.0));
   addParam(ParamWidget::create<MedKnob>(Vec(2, 80), module, MentalPitchShift::OCTAVE_SHIFT_2, -4.5, 4.5, 0.0));
@@ -93,4 +94,4 @@ MentalPitchShiftWidget::MentalPitchShiftWidget(MentalPitchShift *module) : Modul
 
 }
 
-Model *modelMentalPitchShift = Model::create<MentalPitchShift, MentalPitchShiftWidget>("mental", "MentalPitchShift", "Pitch Shifter", CONTROLLER_TAG);
+Model *modelMentalPitchShift = createModel<MentalPitchShift, MentalPitchShiftWidget>("MentalPitchShift");
