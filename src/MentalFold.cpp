@@ -97,7 +97,7 @@ MentalFoldWidget::MentalFoldWidget(MentalFold *module) : ModuleWidget(module)
   addInput(createPort<CVInPort>(Vec(3, box.size.y / 2 - 91), PortWidget::INPUT, module, MentalFold::GAIN_CV_INPUT));
   // output  
   addInput(createPort<InPort>(Vec(3, box.size.y / 2 - 55), PortWidget::INPUT, module, MentalFold::INPUT_1));
-  addOutput(createPort<OutPort>(Vec(3, box.size.y / 2 - 28), Port::OUTPUT, module, MentalFold::OUTPUT_1));
+  addOutput(createPort<OutPort>(Vec(3, box.size.y / 2 - 28), PortWidget::OUTPUT, module, MentalFold::OUTPUT_1));
 
   
   // label
@@ -108,7 +108,7 @@ MentalFoldWidget::MentalFoldWidget(MentalFold *module) : ModuleWidget(module)
   addInput(createPort<CVInPort>(Vec(3, box.size.y - 99), PortWidget::INPUT, module, MentalFold::GAIN_CV_INPUT2));
   // output  
   addInput(createPort<InPort>(Vec(3, box.size.y - 65), PortWidget::INPUT, module, MentalFold::INPUT_2));
-  addOutput(createPort<OutPort>(Vec(3, box.size.y - 38), Port::OUTPUT, module, MentalFold::OUTPUT_2));
+  addOutput(createPort<OutPort>(Vec(3, box.size.y - 38), PortWidget::OUTPUT, module, MentalFold::OUTPUT_2));
 
 }
 Model *modelMentalFold = createModel<MentalFold, MentalFoldWidget>("MentalFold");

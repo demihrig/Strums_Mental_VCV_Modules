@@ -182,14 +182,14 @@ MentalMixerWidget::MentalMixerWidget(MentalMixer *module) : ModuleWidget(module)
 
   // master volume
   addParam(createParam<LrgKnob>(Vec(port_col + column_spacing * 8, 32), module, MentalMixer::MIX_PARAM, 0.0, 1.0, 0.5));
-  addOutput(createPort<OutPort>(Vec(port_col + column_spacing * 10, 30), Port::OUTPUT, module, MentalMixer::MIX_OUTPUT_L));
-  addOutput(createPort<OutPort>(Vec(port_col + column_spacing * 10, 58), Port::OUTPUT, module, MentalMixer::MIX_OUTPUT_R));
+  addOutput(createPort<OutPort>(Vec(port_col + column_spacing * 10, 30), PortWidget::OUTPUT, module, MentalMixer::MIX_OUTPUT_L));
+  addOutput(createPort<OutPort>(Vec(port_col + column_spacing * 10, 58), PortWidget::OUTPUT, module, MentalMixer::MIX_OUTPUT_R));
 
   // sends 
-  addOutput(createPort<OutPort>(Vec(port_col + column_spacing , 30), Port::OUTPUT, module, MentalMixer::SEND_1_OUTPUT));
+  addOutput(createPort<OutPort>(Vec(port_col + column_spacing , 30), PortWidget::OUTPUT, module, MentalMixer::SEND_1_OUTPUT));
   addParam(createParam<SmlKnob>(Vec(pots_col + column_spacing , 58), module, MentalMixer::AUX_SEND_1_PARAM, 0.0, 1.0, 0.0));
   
-  addOutput(createPort<OutPort>(Vec(port_col + column_spacing * 4, 30), Port::OUTPUT, module, MentalMixer::SEND_2_OUTPUT));
+  addOutput(createPort<OutPort>(Vec(port_col + column_spacing * 4, 30), PortWidget::OUTPUT, module, MentalMixer::SEND_2_OUTPUT));
   addParam(createParam<SmlKnob>(Vec(pots_col + column_spacing * 4, 58), module, MentalMixer::AUX_SEND_2_PARAM, 0.0, 1.0, 0.0));
   
   // returns

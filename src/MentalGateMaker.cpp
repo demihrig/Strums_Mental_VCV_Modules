@@ -227,9 +227,9 @@ MentalGateMakerWidget::MentalGateMakerWidget(MentalGateMaker *module) : ModuleWi
   addChild(createLight<MedLight<BlueLED>>(Vec(35+5, 170 + offset + 5), module, MentalGateMaker::CYCLE_BUTTON_LED));
   addInput(createPort<GateInPort>(Vec(3, 170 + offset), PortWidget::INPUT, module, MentalGateMaker::CYCLE_IN));  
   
-  addOutput(createPort<GateOutPort>(Vec(93, 110), Port::OUTPUT, module, MentalGateMaker::OUTPUT)); 
-  addOutput(createPort<GateOutPort>(Vec(93, 140), Port::OUTPUT, module, MentalGateMaker::TRIG_OUT));
-  addOutput(createPort<GateOutPort>(Vec(93, 170), Port::OUTPUT, module, MentalGateMaker::FINISH_OUT)); 
+  addOutput(createPort<GateOutPort>(Vec(93, 110), PortWidget::OUTPUT, module, MentalGateMaker::OUTPUT)); 
+  addOutput(createPort<GateOutPort>(Vec(93, 140), PortWidget::OUTPUT, module, MentalGateMaker::TRIG_OUT));
+  addOutput(createPort<GateOutPort>(Vec(93, 170), PortWidget::OUTPUT, module, MentalGateMaker::FINISH_OUT)); 
  
 }
 

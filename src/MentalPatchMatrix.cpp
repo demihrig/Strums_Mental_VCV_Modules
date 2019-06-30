@@ -145,7 +145,7 @@ MentalPatchMatrixWidget::MentalPatchMatrixWidget(MentalPatchMatrix *module) : Mo
 	for (int i = 0 ; i < 10 ; i++)
   {
 	 addInput(createPort<InPort>(Vec(3, i * row_spacing + top_row), PortWidget::INPUT, module, MentalPatchMatrix::INPUTS + i));  
-   addOutput(createPort<OutPort>(Vec(33 + i * column_spacing , top_row + 10 * row_spacing), Port::OUTPUT, module, MentalPatchMatrix::OUTPUTS + i));
+   addOutput(createPort<OutPort>(Vec(33 + i * column_spacing , top_row + 10 * row_spacing), PortWidget::OUTPUT, module, MentalPatchMatrix::OUTPUTS + i));
    for(int j = 0 ; j < 10 ; j++ )
    {
      addParam(createParam<LEDButton>(Vec(35 + column_spacing * j, top_row + row_spacing * i), module, MentalPatchMatrix::SWITCHES + i + j * 10, 0.0, 1.0, 0.0));

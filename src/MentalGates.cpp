@@ -115,7 +115,7 @@ setPanel(SVG::load(assetPlugin(pluginInstance, "res/MentalGates.svg")));
   {
 	  addInput(createPort<InPort>(Vec(3, group_spacing * i +  60), PortWidget::INPUT, module, MentalGates::INPUT + i));
     addInput(createPort<GateInPort>(Vec(3, group_spacing * i +  28), PortWidget::INPUT, module, MentalGates::GATE_INPUT + i));
-    addOutput(createPort<OutPort>(Vec(32, group_spacing * i +  60), Port::OUTPUT, module, MentalGates::OUTPUT + i));
+    addOutput(createPort<OutPort>(Vec(32, group_spacing * i +  60), PortWidget::OUTPUT, module, MentalGates::OUTPUT + i));
 
     addChild(createLight<MedLight<BlueLED>>(Vec(26, group_spacing * i + 17), module, MentalGates::ON_LEDS + i));
     addParam(createParam<LEDButton>(Vec(35, group_spacing * i +  31), module, MentalGates::BUTTON_PARAM + i, 0.0, 1.0, 0.0));

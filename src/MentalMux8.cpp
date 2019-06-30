@@ -101,7 +101,7 @@ MentalMux8Widget::MentalMux8Widget(MentalMux8 *module) : ModuleWidget(module)
    addChild(createLight<MedLight<BlueLED>>(Vec(33, top_space +  spacing * i + 8 + 100), module, MentalMux8::INPUT_LEDS + i));
   }
   
-  addOutput(createPort<OutPort>(Vec(30, top_space + spacing), Port::OUTPUT, module, MentalMux8::OUTPUT));  
+  addOutput(createPort<OutPort>(Vec(30, top_space + spacing), PortWidget::OUTPUT, module, MentalMux8::OUTPUT));  
   
 }
 

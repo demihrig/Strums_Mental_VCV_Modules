@@ -233,10 +233,10 @@ MentalQuadLFOWidget::MentalQuadLFOWidget(MentalQuadLFO *module) : ModuleWidget(m
 	  addInput(createPort<CVInPort>(mm2px(Vec(1.003 + i * x_offset, 61.915)), PortWidget::INPUT, module, MentalQuadLFO::FREQ_INPUT + i));
 	  addInput(createPort<GateInPort>(mm2px(Vec(1.003 + i * x_offset, 72.858)), PortWidget::INPUT, module, MentalQuadLFO::RESET_INPUT + i));
 
-	  addOutput(createPort<OutPort>(mm2px(Vec(1.003 + i * x_offset, 83.759)), Port::OUTPUT, module, MentalQuadLFO::SIN_OUTPUT + i));
-	  addOutput(createPort<OutPort>(mm2px(Vec(1.003 + i * x_offset, 94.173)), Port::OUTPUT, module, MentalQuadLFO::TRI_OUTPUT + i));
-	  addOutput(createPort<OutPort>(mm2px(Vec(1.003 + i * x_offset, 105.169)), Port::OUTPUT, module, MentalQuadLFO::SAW_OUTPUT + i));
-	  addOutput(createPort<OutPort>(mm2px(Vec(1.003 + i * x_offset, 114.583)), Port::OUTPUT, module, MentalQuadLFO::SQR_OUTPUT + i));
+	  addOutput(createPort<OutPort>(mm2px(Vec(1.003 + i * x_offset, 83.759)), PortWidget::OUTPUT, module, MentalQuadLFO::SIN_OUTPUT + i));
+	  addOutput(createPort<OutPort>(mm2px(Vec(1.003 + i * x_offset, 94.173)), PortWidget::OUTPUT, module, MentalQuadLFO::TRI_OUTPUT + i));
+	  addOutput(createPort<OutPort>(mm2px(Vec(1.003 + i * x_offset, 105.169)), PortWidget::OUTPUT, module, MentalQuadLFO::SAW_OUTPUT + i));
+	  addOutput(createPort<OutPort>(mm2px(Vec(1.003 + i * x_offset, 114.583)), PortWidget::OUTPUT, module, MentalQuadLFO::SQR_OUTPUT + i));
   	
     addChild(createLight<SmallLight<GreenRedLight>>(Vec(13 + i * 30, 125), module, MentalQuadLFO::PHASE_POS_LIGHT + i));
   }

@@ -139,14 +139,14 @@ MentalQuantiserWidget::MentalQuantiserWidget(MentalQuantiser *module) : ModuleWi
   addInput(createPort<CVInPort>(Vec(63, 45), PortWidget::INPUT, module, MentalQuantiser::PITCH_INPUT));
   
   addInput(createPort<CVInPort>(Vec(3, top_row), PortWidget::INPUT, module, MentalQuantiser::INPUT));
-  addOutput(createPort<CVOutPort>(Vec(32, top_row), Port::OUTPUT, module, MentalQuantiser::OUTPUT));
+  addOutput(createPort<CVOutPort>(Vec(32, top_row), PortWidget::OUTPUT, module, MentalQuantiser::OUTPUT));
   
   for (int i = 0; i < 12 ; i++)
   {  
     addParam(createParam<LEDButton>(Vec(3, top_row + 30 + row_spacing * i), module, MentalQuantiser::BUTTON_PARAM + i, 0.0, 1.0, 0.0));
 	  addChild(createLight<MedLight<BlueLED>>(Vec(3+5, top_row + 30 + row_spacing * i + 5), module, MentalQuantiser::BUTTON_LIGHTS + i));
     addChild(createLight<MedLight<BlueLED>>(Vec(30+5, top_row + 30 + row_spacing * i + 5), module, MentalQuantiser::OUTPUT_LIGHTS + i));
-    addOutput(createPort<CVOutPort>(Vec(63, top_row + 40 + row_spacing * i), Port::OUTPUT, module, MentalQuantiser::REF_OUT + i));    
+    addOutput(createPort<CVOutPort>(Vec(63, top_row + 40 + row_spacing * i), PortWidget::OUTPUT, module, MentalQuantiser::REF_OUT + i));    
   }
 }
 

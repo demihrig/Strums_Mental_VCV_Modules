@@ -108,12 +108,12 @@ MentalButtonsWidget::MentalButtonsWidget(MentalButtons *module) : ModuleWidget(m
   int top_space = 15;
   for (int i = 0; i < 7 ; i++)
   {  
-    addOutput(createPort<GateOutPort>(Vec(33, top_space + spacing * i), Port::OUTPUT, module, MentalButtons::OUTPUT + i));
+    addOutput(createPort<GateOutPort>(Vec(33, top_space + spacing * i), PortWidget::OUTPUT, module, MentalButtons::OUTPUT + i));
     addParam(createParam<LEDButton>(Vec(5, top_space + 3 + spacing * i), module, MentalButtons::BUTTON_PARAM +i, 0.0, 1.0, 0.0));
     addChild(createLight<MedLight<BlueLED>>(Vec(10, top_space + 8 + spacing * i), module, MentalButtons::BUTTON_LEDS + i));
   
 	  /// momentarys
-   addOutput(createPort<GateOutPort>(Vec(33, 10 + group_offset +  spacing * i), Port::OUTPUT, module, MentalButtons::MOMENT_OUT + i));
+   addOutput(createPort<GateOutPort>(Vec(33, 10 + group_offset +  spacing * i), PortWidget::OUTPUT, module, MentalButtons::MOMENT_OUT + i));
    addParam(createParam<LEDButton>(Vec(5, 10 + 3 + group_offset +  spacing * i), module, MentalButtons::MOMENT + i, 0.0, 1.0, 0.0));
    addChild(createLight<MedLight<BlueLED>>(Vec(10,10 + 8 + group_offset +  spacing * i), module, MentalButtons::MOMENT_LEDS + i));
   }

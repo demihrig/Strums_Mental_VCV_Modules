@@ -190,15 +190,15 @@ setPanel(SVG::load(assetPlugin(pluginInstance, "res/MentalChord.svg")));
   addInput(createPort<GateInPort>(Vec(33, 341), PortWidget::INPUT, module, MentalChord::SHARP_5_INPUT));
   
   
-  addOutput(createPort<CVOutPort>(Vec(63, 100), Port::OUTPUT, module, MentalChord::OUTPUT_ROOT));
-  addOutput(createPort<CVOutPort>(Vec(63, 125), Port::OUTPUT, module, MentalChord::OUTPUT_THIRD));
-  addOutput(createPort<CVOutPort>(Vec(63, 150), Port::OUTPUT, module, MentalChord::OUTPUT_FIFTH));
-  addOutput(createPort<CVOutPort>(Vec(63, 175), Port::OUTPUT, module, MentalChord::OUTPUT_SEVENTH));  
+  addOutput(createPort<CVOutPort>(Vec(63, 100), PortWidget::OUTPUT, module, MentalChord::OUTPUT_ROOT));
+  addOutput(createPort<CVOutPort>(Vec(63, 125), PortWidget::OUTPUT, module, MentalChord::OUTPUT_THIRD));
+  addOutput(createPort<CVOutPort>(Vec(63, 150), PortWidget::OUTPUT, module, MentalChord::OUTPUT_FIFTH));
+  addOutput(createPort<CVOutPort>(Vec(63, 175), PortWidget::OUTPUT, module, MentalChord::OUTPUT_SEVENTH));  
     
-  addOutput(createPort<CVOutPort>(Vec(63, 250), Port::OUTPUT, module, MentalChord::OUTPUT_1));
-  addOutput(createPort<CVOutPort>(Vec(63, 275), Port::OUTPUT, module, MentalChord::OUTPUT_2));
-  addOutput(createPort<CVOutPort>(Vec(63, 300), Port::OUTPUT, module, MentalChord::OUTPUT_3));
-  addOutput(createPort<CVOutPort>(Vec(63, 325), Port::OUTPUT, module, MentalChord::OUTPUT_4));
+  addOutput(createPort<CVOutPort>(Vec(63, 250), PortWidget::OUTPUT, module, MentalChord::OUTPUT_1));
+  addOutput(createPort<CVOutPort>(Vec(63, 275), PortWidget::OUTPUT, module, MentalChord::OUTPUT_2));
+  addOutput(createPort<CVOutPort>(Vec(63, 300), PortWidget::OUTPUT, module, MentalChord::OUTPUT_3));
+  addOutput(createPort<CVOutPort>(Vec(63, 325), PortWidget::OUTPUT, module, MentalChord::OUTPUT_4));
     
 }
 

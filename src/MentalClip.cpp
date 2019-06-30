@@ -89,7 +89,7 @@ MentalClipWidget::MentalClipWidget(MentalClip *module) : ModuleWidget(module)
   addInput(createPort<CVInPort>(Vec(3, box.size.y / 2 - 91), PortWidget::INPUT, module, MentalClip::GAIN1_CV_INPUT));
   // output  
   addInput(createPort<InPort>(Vec(3, box.size.y / 2 - 55), PortWidget::INPUT, module, MentalClip::INPUT1));
-  addOutput(createPort<OutPort>(Vec(3, box.size.y / 2 - 28), Port::OUTPUT, module, MentalClip::OUTPUT1));
+  addOutput(createPort<OutPort>(Vec(3, box.size.y / 2 - 28), PortWidget::OUTPUT, module, MentalClip::OUTPUT1));
 
   
   // label
@@ -100,7 +100,7 @@ MentalClipWidget::MentalClipWidget(MentalClip *module) : ModuleWidget(module)
   addInput(createPort<CVInPort>(Vec(3, box.size.y - 101), PortWidget::INPUT, module, MentalClip::GAIN2_CV_INPUT));
   // output  
   addInput(createPort<InPort>(Vec(3, box.size.y - 65), PortWidget::INPUT, module, MentalClip::INPUT2));
-  addOutput(createPort<OutPort>(Vec(3, box.size.y - 38), Port::OUTPUT, module, MentalClip::OUTPUT2));
+  addOutput(createPort<OutPort>(Vec(3, box.size.y - 38), PortWidget::OUTPUT, module, MentalClip::OUTPUT2));
 
 }
 

@@ -6,11 +6,8 @@ Plugin *pluginInstance;
 void init(rack::Plugin *p)
 {
     pluginInstance = p;
-    //pluginInstance->slug = "mental";
-    //p->slug = TOSTRING(SLUG);
-    //p->version = TOSTRING(VERSION);
-    p->website = "https://github.com/Strum/Strums_Mental_VCV_Modules";
-    p->manual = "https://github.com/Strum/Strums_Mental_VCV_Modules/wiki/Mental-Modules-WIKI";
+    //p->websiteURL = "https://github.com/Strum/Strums_Mental_VCV_Modules";
+    p->manualUrl = "https://github.com/Strum/Strums_Mental_VCV_Modules/wiki/Mental-Modules-WIKI";
 
     p->addModel(modelMentalSubMixer);
     p->addModel(modelMentalMults);

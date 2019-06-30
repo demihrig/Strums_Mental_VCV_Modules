@@ -67,8 +67,8 @@ MentalSumsWidget::MentalSumsWidget(MentalSums *module) : ModuleWidget(module)
 
   setPanel(SVG::load(assetPlugin(pluginInstance, "res/MentalSums.svg")));
 
-  addOutput(createPort<OutPort>(Vec(3, 22), Port::OUTPUT, module, MentalSums::OUTPUT_1));
-  addOutput(createPort<OutPort>(Vec(3, 190), Port::OUTPUT, module, MentalSums::OUTPUT_2));
+  addOutput(createPort<OutPort>(Vec(3, 22), PortWidget::OUTPUT, module, MentalSums::OUTPUT_1));
+  addOutput(createPort<OutPort>(Vec(3, 190), PortWidget::OUTPUT, module, MentalSums::OUTPUT_2));
   
   addInput(createPort<InPort>(Vec(3, 58), PortWidget::INPUT, module, MentalSums::INPUT_1));
   addInput(createPort<InPort>(Vec(3, 83), PortWidget::INPUT, module, MentalSums::INPUT_2));

@@ -87,10 +87,10 @@ MentalPitchShiftWidget::MentalPitchShiftWidget(MentalPitchShift *module) : Modul
   addInput(createPort<CVInPort>(Vec(33, 140), PortWidget::INPUT, module, MentalPitchShift::SEMITONE_SHIFT_1_CVINPUT));
 	addInput(createPort<CVInPort>(Vec(33, 200), PortWidget::INPUT, module, MentalPitchShift::SEMITONE_SHIFT_2_CVINPUT));
 
-  addOutput(createPort<CVOutPort>(Vec(33, 50), Port::OUTPUT, module, MentalPitchShift::OCTAVE_SHIFT_1_OUTPUT));
-  addOutput(createPort<CVOutPort>(Vec(33, 110), Port::OUTPUT, module, MentalPitchShift::OCTAVE_SHIFT_2_OUTPUT));
-  addOutput(createPort<CVOutPort>(Vec(33, 170), Port::OUTPUT, module, MentalPitchShift::SEMITONE_SHIFT_1_OUTPUT));
-  addOutput(createPort<CVOutPort>(Vec(33, 230), Port::OUTPUT, module, MentalPitchShift::SEMITONE_SHIFT_2_OUTPUT));
+  addOutput(createPort<CVOutPort>(Vec(33, 50), PortWidget::OUTPUT, module, MentalPitchShift::OCTAVE_SHIFT_1_OUTPUT));
+  addOutput(createPort<CVOutPort>(Vec(33, 110), PortWidget::OUTPUT, module, MentalPitchShift::OCTAVE_SHIFT_2_OUTPUT));
+  addOutput(createPort<CVOutPort>(Vec(33, 170), PortWidget::OUTPUT, module, MentalPitchShift::SEMITONE_SHIFT_1_OUTPUT));
+  addOutput(createPort<CVOutPort>(Vec(33, 230), PortWidget::OUTPUT, module, MentalPitchShift::SEMITONE_SHIFT_2_OUTPUT));
 
 }
 
