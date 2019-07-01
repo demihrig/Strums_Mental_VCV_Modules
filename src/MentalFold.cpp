@@ -33,7 +33,14 @@ struct MentalFold : Module {
 	};
 
 	MentalFold() {
-		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS);}
+	  config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS);
+
+    configParam(MentalFold::THRESH_PARAM, 0.0, 1.0, 1.0);
+    configParam(MentalFold::GAIN_PARAM, 0.0, 1.0, 0.5);
+
+    configParam(MentalFold::THRESH_PARAM2, 0.0, 1.0, 1.0);
+    configParam(MentalFold::GAIN_PARAM2, 0.0, 1.0, 0.5);
+  }
 	void step() override;
 };
 
@@ -84,17 +91,22 @@ struct MentalFoldWidget : ModuleWidget {
   MentalFoldWidget(MentalFold *module);
 };
 
-MentalFoldWidget::MentalFoldWidget(MentalFold *module) : ModuleWidget(module)
+MentalFoldWidget::MentalFoldWidget(MentalFold *module)
 {
-
+  setModule(module);
   setPanel(APP->window->loadSvg(asset::plugin(pluginInstance, "res/MentalFold.svg")));
-  
+
+  //params
+  addParam(createParam<SmlKnob>(Vec(6, box.size.y / 2 - 169), module, MentalFold::THRESH_PARAM));
+  addParam(createParam<SmlKnob>(Vec(6, box.size.y / 2 - 112), module, MentalFold::GAIN_PARAM));
+  addParam(createParam<SmlKnob>(Vec(6, box.size.y - 177), module, MentalFold::THRESH_PARAM2));
+  addParam(createParam<SmlKnob>(Vec(6, box.size.y - 120), module, MentalFold::GAIN_PARAM2));
   if(module) {
     // label
-    addParam(createParam<SmlKnob>(Vec(6, box.size.y / 2 - 169), module, MentalFold::THRESH_PARAM, 0.0, 1.0, 1.0));
+    //addParam(createParam<SmlKnob>(Vec(6, box.size.y / 2 - 169), module, MentalFold::THRESH_PARAM, 0.0, 1.0, 1.0));
     addInput(createPort<CVInPort>(Vec(3, box.size.y / 2 - 148), PortWidget::INPUT, module, MentalFold::THRESH_CV_INPUT));
     // label
-    addParam(createParam<SmlKnob>(Vec(6, box.size.y / 2 - 112), module, MentalFold::GAIN_PARAM, 0.0, 1.0, 0.5));
+    //addParam(createParam<SmlKnob>(Vec(6, box.size.y / 2 - 112), module, MentalFold::GAIN_PARAM, 0.0, 1.0, 0.5));
     addInput(createPort<CVInPort>(Vec(3, box.size.y / 2 - 91), PortWidget::INPUT, module, MentalFold::GAIN_CV_INPUT));
     // output  
     addInput(createPort<InPort>(Vec(3, box.size.y / 2 - 55), PortWidget::INPUT, module, MentalFold::INPUT_1));
@@ -102,10 +114,10 @@ MentalFoldWidget::MentalFoldWidget(MentalFold *module) : ModuleWidget(module)
 
 
     // label
-    addParam(createParam<SmlKnob>(Vec(6, box.size.y - 177), module, MentalFold::THRESH_PARAM2, 0.0, 1.0, 1.0));
+    //addParam(createParam<SmlKnob>(Vec(6, box.size.y - 177), module, MentalFold::THRESH_PARAM2, 0.0, 1.0, 1.0));
     addInput(createPort<CVInPort>(Vec(3, box.size.y - 156), PortWidget::INPUT, module, MentalFold::THRESH_CV_INPUT2));
     // label
-    addParam(createParam<SmlKnob>(Vec(6, box.size.y - 120), module, MentalFold::GAIN_PARAM2, 0.0, 1.0, 0.5));
+    //addParam(createParam<SmlKnob>(Vec(6, box.size.y - 120), module, MentalFold::GAIN_PARAM2, 0.0, 1.0, 0.5));
     addInput(createPort<CVInPort>(Vec(3, box.size.y - 99), PortWidget::INPUT, module, MentalFold::GAIN_CV_INPUT2));
     // output  
 

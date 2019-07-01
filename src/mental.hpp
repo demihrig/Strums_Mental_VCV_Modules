@@ -95,7 +95,7 @@ struct GateOutPort : SVGPort {
 
 struct LrgKnob : RoundKnob {
 	LrgKnob() {
-		setSVG(SVG_LOAD(asset::plugin(pluginInstance, "res/components/LrgKnob.svg")));
+		setSvg(SVG_LOAD(asset::plugin(pluginInstance, "res/components/LrgKnob.svg")));
 		box.size = Vec(42,42);
 
 	}
@@ -103,7 +103,7 @@ struct LrgKnob : RoundKnob {
 
 struct MedKnob : RoundKnob {
 	MedKnob() {
-		setSVG(SVG_LOAD(asset::plugin(pluginInstance, "res/components/MedKnob.svg")));
+		setSvg(SVG_LOAD(asset::plugin(pluginInstance, "res/components/MedKnob.svg")));
 		box.size = Vec(24,24);
 
 	}
@@ -111,7 +111,7 @@ struct MedKnob : RoundKnob {
 
 struct SmlKnob : RoundKnob {
 	SmlKnob() {
-		setSVG(SVG_LOAD(asset::plugin(pluginInstance, "res/components/SmlKnob.svg")));
+		setSvg(SVG_LOAD(asset::plugin(pluginInstance, "res/components/SmlKnob.svg")));
 		box.size = Vec(20,20);
 	}
 };
@@ -130,7 +130,7 @@ struct ThreeWaySwitch : SvgSwitch /*ToggleSwitch*/ {
 
 /// lights
 
-struct MentalLight : GrayModuleLightWidget{
+struct MentalLight : GrayModuleLightWidget {
 	MentalLight() { bgColor = nvgRGB(0x40, 0x40, 0x40); }
 };
 struct RedLED : MentalLight {
@@ -145,7 +145,9 @@ struct BlueLED : MentalLight {
 
 struct OrangeLED : MentalLight {
  	OrangeLED() {
- 		addBaseColor(COLOR_ORANGE); }
+ 		//addBaseColor(COLOR_ORANGE); }
+		addBaseColor(componentlibrary::SCHEME_ORANGE);
+	}
 };
 
 template <typename BASE>

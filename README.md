@@ -59,7 +59,7 @@ Anything not labeled *working/stable* is assumed to be broken
 **Clipper** - *working, not fully stable*
   Simple Clipping distortion
 
-**Wave Folder** - 
+**Wave Folder** - *stable* - 
   Simple Waver folder
   
 **Pitch Shifter** - 

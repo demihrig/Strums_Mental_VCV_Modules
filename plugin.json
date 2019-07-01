@@ -1,7 +1,7 @@
 {
   "slug": "mental",
   "name": "Strum's Mental VCV Modules (takantron89's fix)",
-  "version": "0.6.3",
+  "version": "1.0.0",
   "license": "BSD-3",
   "author": "Strum",
   "authorEmail": "strum@softhome.net",
@@ -9,6 +9,10 @@
   "pluginUrl": "https://github.com/Strum/Strums_Mental_VCV_Modules",
   "manualUrl": "https://github.com/Strum/Strums_Mental_VCV_Modules/wiki/Mental-Modules-WIKI",
   "sourceUrl": "https://github.com/takantron89/Strums_Mental_VCV_Modules",
+  "contributors":[
+
+  ],
+  
   "modules": [
     {
       "slug": "MentalSubMixer",

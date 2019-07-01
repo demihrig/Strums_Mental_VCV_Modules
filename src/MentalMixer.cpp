@@ -169,7 +169,7 @@ struct MentalMixerWidget : ModuleWidget {
 
 MentalMixerWidget::MentalMixerWidget(MentalMixer *module) : ModuleWidget(module)
 {
-  
+
   setPanel(SVG::load(assetPlugin(pluginInstance, "res/Mixer.svg")));
   if(module) {
     
@@ -207,7 +207,7 @@ MentalMixerWidget::MentalMixerWidget(MentalMixer *module) : ModuleWidget(module)
     {
       addInput(createPort<InPort>(Vec(port_col+column_spacing*i, top_row), PortWidget::INPUT, module, MentalMixer::CH_INPUT + i));
       // volume
-    addParam(createParam<SmlKnob>(Vec(pots_col+column_spacing*i, top_row + row_spacing + 6), module, MentalMixer::VOL_PARAM + i, 0.0, 1.0, 0.0));
+      addParam(createParam<SmlKnob>(Vec(pots_col+column_spacing*i, top_row + row_spacing + 6), module, MentalMixer::VOL_PARAM + i, 0.0, 1.0, 0.0));
       addInput(createPort<CVInPort>(Vec(port_col+column_spacing*i, top_row + row_spacing * 2), PortWidget::INPUT, module, MentalMixer::CH_VOL_INPUT + i));
       // panning
       addParam(createParam<SmlKnob>(Vec(pots_col+column_spacing*i, top_row + row_spacing * 3 + 6), module, MentalMixer::PAN_PARAM + i, 0.0, 1.0, 0.5));
