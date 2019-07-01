@@ -101,28 +101,39 @@ MentalFoldWidget::MentalFoldWidget(MentalFold *module)
   addParam(createParam<SmlKnob>(Vec(6, box.size.y / 2 - 112), module, MentalFold::GAIN_PARAM));
   addParam(createParam<SmlKnob>(Vec(6, box.size.y - 177), module, MentalFold::THRESH_PARAM2));
   addParam(createParam<SmlKnob>(Vec(6, box.size.y - 120), module, MentalFold::GAIN_PARAM2));
+
+  addInput(createInput<CVInPort>(Vec(3, box.size.y / 2 - 148), module, MentalFold::THRESH_CV_INPUT));
+  addInput(createInput<CVInPort>(Vec(3, box.size.y / 2 - 91), module, MentalFold::GAIN_CV_INPUT));
+  addInput(createInput<InPort>(Vec(3, box.size.y / 2 - 55), module, MentalFold::INPUT_1));
+
+  addOutput(createOutput<OutPort>(Vec(3, box.size.y / 2 - 28), module, MentalFold::OUTPUT_1));
+
+  addInput(createInput<CVInPort>(Vec(3, box.size.y - 156), module, MentalFold::THRESH_CV_INPUT2));
+  // label
+  addInput(createInput<CVInPort>(Vec(3, box.size.y - 99), module, MentalFold::GAIN_CV_INPUT2));
+  // output  
+
+  addInput(createInput<InPort>(Vec(3, box.size.y - 65), module, MentalFold::INPUT_2));
+  addOutput(createOutput<OutPort>(Vec(3, box.size.y - 38), module, MentalFold::OUTPUT_2));
+
   if(module) {
     // label
-    //addParam(createParam<SmlKnob>(Vec(6, box.size.y / 2 - 169), module, MentalFold::THRESH_PARAM, 0.0, 1.0, 1.0));
-    addInput(createPort<CVInPort>(Vec(3, box.size.y / 2 - 148), PortWidget::INPUT, module, MentalFold::THRESH_CV_INPUT));
+    //addInput(createPort<CVInPort>(Vec(3, box.size.y / 2 - 148), PortWidget::INPUT, module, MentalFold::THRESH_CV_INPUT));
     // label
-    //addParam(createParam<SmlKnob>(Vec(6, box.size.y / 2 - 112), module, MentalFold::GAIN_PARAM, 0.0, 1.0, 0.5));
-    addInput(createPort<CVInPort>(Vec(3, box.size.y / 2 - 91), PortWidget::INPUT, module, MentalFold::GAIN_CV_INPUT));
+    //addInput(createPort<CVInPort>(Vec(3, box.size.y / 2 - 91), PortWidget::INPUT, module, MentalFold::GAIN_CV_INPUT));
     // output  
-    addInput(createPort<InPort>(Vec(3, box.size.y / 2 - 55), PortWidget::INPUT, module, MentalFold::INPUT_1));
-    addOutput(createPort<OutPort>(Vec(3, box.size.y / 2 - 28), PortWidget::OUTPUT, module, MentalFold::OUTPUT_1));
+    //addInput(createPort<InPort>(Vec(3, box.size.y / 2 - 55), PortWidget::INPUT, module, MentalFold::INPUT_1));
+    //addOutput(createPort<OutPort>(Vec(3, box.size.y / 2 - 28), PortWidget::OUTPUT, module, MentalFold::OUTPUT_1));
 
 
-    // label
-    //addParam(createParam<SmlKnob>(Vec(6, box.size.y - 177), module, MentalFold::THRESH_PARAM2, 0.0, 1.0, 1.0));
-    addInput(createPort<CVInPort>(Vec(3, box.size.y - 156), PortWidget::INPUT, module, MentalFold::THRESH_CV_INPUT2));
-    // label
-    //addParam(createParam<SmlKnob>(Vec(6, box.size.y - 120), module, MentalFold::GAIN_PARAM2, 0.0, 1.0, 0.5));
-    addInput(createPort<CVInPort>(Vec(3, box.size.y - 99), PortWidget::INPUT, module, MentalFold::GAIN_CV_INPUT2));
-    // output  
+    // // label
+    // addInput(createPort<CVInPort>(Vec(3, box.size.y - 156), PortWidget::INPUT, module, MentalFold::THRESH_CV_INPUT2));
+    // // label
+    // addInput(createPort<CVInPort>(Vec(3, box.size.y - 99), PortWidget::INPUT, module, MentalFold::GAIN_CV_INPUT2));
+    // // output  
 
-    addInput(createPort<InPort>(Vec(3, box.size.y - 65), PortWidget::INPUT, module, MentalFold::INPUT_2));
-    addOutput(createPort<OutPort>(Vec(3, box.size.y - 38), PortWidget::OUTPUT, module, MentalFold::OUTPUT_2));
+    // addInput(createPort<InPort>(Vec(3, box.size.y - 65), PortWidget::INPUT, module, MentalFold::INPUT_2));
+    // addOutput(createPort<OutPort>(Vec(3, box.size.y - 38), PortWidget::OUTPUT, module, MentalFold::OUTPUT_2));
   }
 
 }
