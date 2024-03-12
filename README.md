@@ -1,5 +1,4 @@
-# Strum's Mental VCV Module Suite (taktantron89's fix)
-
+# Strum's Mental VCV Module Suite (fix)
 strum@softhome.net
 
 Simple but useful modules for VCVRack
